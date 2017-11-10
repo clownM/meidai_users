@@ -11,8 +11,7 @@ $(document).ready(function() {
 
     tabsToggle();
     if (getCookie("uuid") != '') {
-
-
+        console.log("cookie-uuid:" + getCookie("uuid"));
         var fsw_obj = {
             'action': "query",
             'uuid': getCookie("uuid"),
@@ -37,6 +36,7 @@ $(document).ready(function() {
             async: false,
             success: function(data) {
                 if (data.result == 'true') {
+
                     console.log("data.orders:" + data.orders);
 
                     // query_batchorder(data.orders,data.orders.reverse())
@@ -71,7 +71,7 @@ $(document).ready(function() {
 
     } else {
         // $('.login').html('<a href="login.html"><span class="glyphicon glyphicon-user"></span>登录/注册</a>');
-
+        console.log("cookie不存在！");
     }
 
     function hashCode(str) {

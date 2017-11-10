@@ -474,6 +474,7 @@ $(document).ready(function() {
             data: _data,
             success: function(re) {
                 var re = JSON.parse(re);
+
                 if (re.result == "true") {
                     // setCookie("uuid",re.uuid,1); //0.21
                     setCookie("uuid", re.uuid, 0.21);
@@ -847,7 +848,7 @@ $(document).ready(function() {
     //页面跳转
     //-----------------------------
     function goTohtml() {
-        window.location.href = 'personaldata.html';
+        window.location.href = 'order_list.html';
     }
     //-----------------------------
     //Cookie

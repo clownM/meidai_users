@@ -6,10 +6,11 @@
     <meta name="description" content="MEIDAI">
     <meta name="author" content="MEIDAI">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-
+    <title>美戴-登录/注册</title>
     <link rel="shortcut icon" href="images/logoico.ico">
     <link rel="Bookmark" href="images/logoico.ico">
     <link rel="stylesheet" href="res/bootstrap-3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/login.css">
     <!-- <link rel="stylesheet" href="css/app.css">-->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -63,13 +64,13 @@
                                     <span class="login_password_error"></span>
                                 </div>
                                 <input class='do_login .btn' type="submit" name="确定">
-                                <div class='remember' style="text-align:left;">
-                                    <input type="checkbox" name="remenberMe">
-                                    <label for="remenberMe">记住我</label>
-                                    <!-- <span>无法登陆？</span> -->
+                                <div class='remember'>
+                                    <input type="checkbox" name="" id="rememberMe">
+                                    <label for="rememberMe">记住我</label>
+                                    <span>无法登陆？</span>
                                 </div>
                                 <div class='shejiao' style="text-align:left;">
-                                    <a>社交账户登陆</a>
+                                    <a href="#">社交账户登陆</a>
                                 </div>
                                 <div class="fsw_querr">
                                     <span class="glyphicon glyphicon-remove"></span>
@@ -117,7 +118,7 @@
                                     <span></span>
                                     <span></span>
                                 </div>
-                                <div class='shejiao'><a style="color: white;">社交账户登陆</a></div>
+                                <div class='shejiao'><a style="display:none">社交账户登陆</a></div>
                                 <div class="fsw_querr">
                                     <span class="glyphicon glyphicon-remove"></span>
                                     <div class="fsw_querr_infor"></div>
@@ -177,17 +178,13 @@
     </div>
 
     <script src="res/jquery-3.1.0.min.js"></script>
-    <!-- <script src="js/jquery/jquery.validate.js"></script>-->
-
     <script src="js/fswear.js"></script>
     <!-- <script src="js/fswear_user.js"></script> -->
     <script src="js/login.js"></script>
     <script type="text/javascript">
     </script>
-    <!-- Other JavaScript at the bottom -->
-    <style type="text/css">
 
-    </style>
+
 </body>
 
 </html>
