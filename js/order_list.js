@@ -11,7 +11,7 @@ $(document).ready(function() {
 
     tabsToggle();
     if (getCookie("uuid") != '') {
-        console.log("cookie-uuid:" + getCookie("uuid"));
+        // console.log("cookie-uuid:" + getCookie("uuid"));
         var fsw_obj = {
             'action': "query",
             'uuid': getCookie("uuid"),
