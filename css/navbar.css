@@ -1,0 +1,385 @@
+/*自定义*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.btn-lg {
+    width: 300px;
+    height: 70px;
+}
+
+.btn-md {
+    width: 280px;
+    height: 60px;
+}
+
+.btn-sm {
+    width: 200px;
+    height: 50px;
+}
+
+.btn-sm {
+    width: 170px;
+    height: 40px;
+}
+
+.btn-xs {}
+
+.btn-danger {
+    color: #f2f2f2;
+    background-color: #ff5f5f;
+    border-color: #ff5f5f;
+    border-radius: 10px;
+}
+
+.btn-danger:focus,
+.btn-danger.focus {
+    color: #f2f2f2;
+    background-color: #db3232;
+    border-color: #db3232;
+    outline: none;
+}
+
+.btn-danger:hover {
+    color: #f2f2f2;
+    background-color: #d14242;
+    border-color: #d14242;
+}
+
+.btn-danger:active:hover,
+.btn-danger.active:hover,
+.open>.dropdown-toggle.btn-danger:hover,
+.btn-danger:active:focus,
+.btn-danger.active:focus,
+.open>.dropdown-toggle.btn-danger:focus,
+.btn-danger:active.focus,
+.btn-danger.active.focus,
+.open>.dropdown-toggle.btn-danger.focus {
+    color: #f2f2f2;
+    background-color: #db3232;
+    border-color: #db3232;
+    outline: none;
+}
+
+.btn-info {
+    color: #f2f2f2;
+    background-color: #02c7f1;
+    border-color: #02c7f1;
+    border-radius: 10px;
+}
+
+.btn-info:focus,
+.btn-info.focus {
+    color: #f2f2f2;
+    background-color: #0198b8;
+    border-color: #0198b8;
+    outline: none;
+}
+
+.btn-info:hover {
+    color: #f2f2f2;
+    background-color: #00b5d4;
+    border-color: #00b5d4;
+}
+
+.btn-info:active,
+.btn-info.active,
+.open>.dropdown-toggle.btn-info {
+    color: #f2f2f2;
+    background-color: #02c7f1;
+    border-color: #02c7f1;
+}
+
+.btn-info:active:hover,
+.btn-info.active:hover,
+.open>.dropdown-toggle.btn-info:hover,
+.btn-info:active:focus,
+.btn-info.active:focus,
+.open>.dropdown-toggle.btn-info:focus,
+.btn-info:active.focus,
+.btn-info.active.focus,
+.open>.dropdown-toggle.btn-info.focus {
+    color: #f2f2f2;
+    background-color: #0198b8;
+    border-color: #0198b8;
+    outline: none;
+}
+
+
+/*横线点缀*/
+
+
+/*用户头像*/
+
+.nav-user-portrait {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+
+/*阴影 */
+
+.box-shadow {
+    box-shadow: 3px 3px 2px #D2D2D2
+}
+
+
+/*导航*/
+
+.navbar-default {
+    background: #02c7f1;
+    border-radius: 0;
+    height: 60px;
+    color: #fff;
+    border: 0px solid #02c7f1;
+}
+
+.navbar-nav {
+    position: relative;
+}
+
+.navbar .navbar-nav li a {
+    color: #555;
+    line-height: 30px;
+}
+
+.navbar .navbar-nav li a:hover {
+    color: #222;
+}
+
+.navbar .navbar-nav li a:focus {
+    color: #222;
+}
+
+.navbar .navbar-nav>.open>a,
+.navbar .navbar-nav>.open>a:focus,
+.navbar .navbar-nav>.open>a:hover {
+    background-color: #fff;
+    color: #02c7f1;
+}
+
+.navbar-nav .dropdown-menu span a {
+    color: #000;
+    /* margin-left: 8px; */
+}
+
+.navbar-nav .dropdown-menu span a:hover {
+    color: #000;
+}
+
+.dropdown li a {
+    color: #000;
+}
+
+.dropdown .dropdown-menu {
+    border-top: 0px;
+}
+
+
+/*手机显示*/
+
+
+/*我的主页*/
+
+
+/*所有订单 */
+
+
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+
+@media all and (min-width: 1200px) {
+    /*导航*/
+    .nav-container {
+        width: 1200px;
+    }
+    /*.nav-user-portrait{margin:5px 0px 0 85%;}*/
+    .vertical-moulding {
+        position: absolute;
+        top: 2%;
+        left: 100%;
+    }
+    /*个人信息页面*/
+    /*所有订单 */
+    .indent {
+        width: 55% !important;
+    }
+    .content-bottom img {
+        width: 100%;
+    }
+}
+
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+
+@media all and (min-width:992px) and (max-width:1199px) {
+    /*导航*/
+    /*.nav-user-portrait{margin:5px 0px 0 70%;}*/
+    .vertical-moulding {
+        position: absolute;
+        top: 2%;
+        left: 100%;
+    }
+    /*个人信息页面*/
+    /*所有订单 */
+    .indent {
+        width: 70% !important;
+    }
+    .content-bottom img {
+        width: 90%;
+    }
+}
+
+
+/* 小屏幕（平板，大于等于 768px） */
+
+@media all and (min-width:768px) and (max-width:991px) {
+    /*导航*/
+    /*.nav-user-portrait{margin:5px 0px 0 20%;}*/
+    .vertical-moulding {
+        position: absolute;
+        top: 2%;
+        left: 100%;
+    }
+    /*个人信息页面*/
+    .FSW_Form_Group {
+        margin-left: 28.5%;
+    }
+    /*眼镜刻字页*/
+    .FSW_Lettering {
+        margin-left: 15%;
+    }
+    /*所有订单 */
+    .indent {
+        width: 70% !important;
+    }
+    .content-bottom img {
+        width: 80%;
+    }
+    .bottom-right button {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    /*服务信息页面*/
+    /*.FSW_Service{width:35%;}*/
+    .service {
+        width: 280px;
+    }
+    .service button {
+        left: 170%;
+    }
+}
+
+
+/* 超小屏幕（手机，小于 768px） */
+
+
+/*@media all and (min-width:320px) and (max-width:767px){*/
+
+@media all and (max-width:767px) {
+    /*个人信息页面*/
+    .FSW_Form_Group {
+        display: inline-block;
+        margin-left: auto;
+        margin-top: auto;
+    }
+    /*预约页面   */
+    /*眼镜刻字页*/
+    .lettering {
+        margin-top: 50px !important;
+        margin-bottom: 50px;
+    }
+    .FSW_Lettering_Top {
+        width: 100% !important;
+        border: 1px solid #EBEBEB;
+        margin: 0 auto;
+    }
+    .lettering-top {
+        width: 100% !important;
+    }
+    /*服务信息页面*/
+    .service {
+        width: 90%;
+        margin-top: 100px;
+    }
+    .service button {
+        left: 95%;
+    }
+    /*所有订单 */
+    .indent {
+        width: 100% !important;
+        position: absolute;
+        left: 0% !important;
+    }
+    .content-bottom img {
+        width: 80%;
+    }
+    .bottom-right button {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    /*改变当登录密码修改页面时手机状态下的样式*/
+    .form-inline .form-group {
+        display: inline-block;
+        margin-bottom: 0;
+        vertical-align: middle;
+    }
+    .form-inline .form-control {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+    }
+    .form-inline .form-control-static {
+        display: inline-block;
+    }
+    .form-inline .input-group {
+        display: inline-table;
+        vertical-align: middle;
+    }
+    .form-inline .input-group .input-group-addon,
+    .form-inline .input-group .input-group-btn,
+    .form-inline .input-group .form-control {
+        width: auto;
+    }
+    .form-inline .input-group>.form-control {
+        width: 100%;
+    }
+    .form-inline .control-label {
+        margin-bottom: 0;
+        vertical-align: middle;
+    }
+    .form-inline .radio,
+    .form-inline .checkbox {
+        display: inline-block;
+        margin-top: 0;
+        margin-bottom: 0;
+        vertical-align: middle;
+    }
+    .form-inline .radio label,
+    .form-inline .checkbox label {
+        padding-left: 0;
+    }
+    .form-inline .radio input[type="radio"],
+    .form-inline .checkbox input[type="checkbox"] {
+        position: relative;
+        margin-left: 0;
+    }
+    .form-inline .has-feedback .form-control-feedback {
+        top: 0;
+    }
+}

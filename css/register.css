@@ -1,0 +1,215 @@
+/*IE input X 去掉文本框的叉叉和密码输入框的眼睛图标*/
+
+::-ms-clear,
+::-ms-reveal {
+    display: none;
+}
+
+@media (max-width:767px) {
+    #content .fsw_maxbox {
+        max-width: 400px;
+        margin: 0px auto;
+    }
+    #title p {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+    #fsw_table .fsw_td .fsw_center {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#content .fsw_maxbox {
+    max-width: 400px;
+    margin: 0px auto;
+}
+
+input[type="submit"] {
+    height: 50px;
+    background: #00d2ff;
+    outline: none;
+}
+
+.do_registration {
+    width: 100%;
+    border: none;
+    color: #fff;
+    font-family: NotoSansHans Light;
+    font-size: 24px;
+}
+
+button,
+input,
+select,
+textarea,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-family: '宋体', Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+#fsw_table {
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+
+#fsw_table .fsw_td {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#fsw_table .fsw_td .fsw_center {
+    width: 100%;
+    max-width: 400px;
+    display: inline-block;
+    text-align: left;
+}
+
+#title {
+    text-align: center;
+}
+
+#title>img {
+    width: 130px;
+}
+
+#title p {
+    font-family: "微软雅黑";
+    font-size: 36px;
+    margin-top: 10px;
+}
+
+ul li,
+ol li {
+    list-style: none;
+}
+
+
+/********************/
+
+#form_register.selected div {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#content .fsw_juerr {
+    margin-bottom: 10px;
+    position: relative;
+    padding: 0px 12px;
+    color: red;
+}
+
+#content .fws_input_danger {
+    border-color: red;
+}
+
+#content .fsw_querr {
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: rgb(255, 184, 184);
+    padding-right: 12px;
+    overflow: hidden;
+    display: none;
+}
+
+#content .fsw_querr span {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
+    font-size: 24px;
+    margin-top: 5px;
+    border-right: 1px solid rgb(252, 74, 74);
+    float: left;
+    color: rgb(252, 74, 74);
+}
+
+#content .fsw_querr .fsw_querr_infor {
+    height: 40px;
+    margin-top: 5px;
+    margin-left: 5px;
+    float: left;
+    line-height: 40px;
+    font-size: 18px;
+    color: rgb(255, 0, 0);
+}
+
+#content .fsw_success {
+    width: 100%;
+    height: 50px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: rgb(196, 226, 170);
+    padding-right: 12px;
+    display: none;
+    overflow: hidden;
+}
+
+#content .fsw_success span {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
+    font-size: 24px;
+    margin-top: 5px;
+    border-right: 1px solid rgb(50, 108, 0);
+    float: left;
+    color: rgb(50, 108, 0);
+}
+
+#content .fsw_success .fsw_success_infor {
+    height: 40px;
+    margin-top: 5px;
+    margin-left: 5px;
+    float: left;
+    line-height: 40px;
+    font-size: 18px;
+    color: rgb(50, 108, 0);
+}
+
+
+/*
+ *
+ * */
+
+#form_register input[type='text'],
+#form_register input[type='password'] {
+    -webkit-border-radius: 5px !important;
+    -moz-border-radius: 5px !important;
+    -o-border-radius: 5px !important;
+    border-radius: 5px !important;
+    height: 50px;
+    font-size: 24px;
+    font-weight: 100;
+}
+
+#fsw_bj {
+    width: 100%;
+    height: 100%;
+    background: rgba(127, 127, 127, .4);
+    position: fixed;
+    display: none;
+    left: 0px;
+    top: 0px;
+}

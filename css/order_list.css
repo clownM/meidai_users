@@ -1,0 +1,96 @@
+.tabs {
+    width: 100%;
+    height: 60px;
+}
+
+.tabs-head {
+    padding-top: 20px;
+    padding-left: 20px;
+    width: 100%;
+    height: 60px;
+}
+
+.tabs-head ul li {
+    float: left;
+    /* width: 15%; */
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.tabs-head ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #ccc;
+    color: inherit;
+}
+
+.tabs-head ul li a:hover,
+.tabs-head ul li a.active {
+    color: rgb(11, 227, 253);
+    border-bottom: 1px solid rgb(11, 227, 253);
+}
+
+.tabs-body {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px 15px 15px;
+}
+
+.tabs-body .tabs-contents {
+    width: 100%;
+    /* height: 300px; */
+    border: 1px solid #ccc;
+    display: none;
+}
+
+.tabs-body div.active {
+    display: block;
+}
+
+.tabs-body .tabs-contents img {
+    max-width: 100%;
+    max-height: 150px;
+}
+
+.order .order-top {
+    width: 100%;
+    height: 40px;
+    margin-left: 0;
+    line-height: 40px;
+    background-color: rgb(11, 227, 253);
+}
+
+.order .order-body {
+    width: 100%;
+    height: 150px;
+    /* line-height: 100%; */
+}
+
+.order-body-img {
+    height: 150px;
+    line-height: 150px;
+}
+
+.order-body-info {
+    height: 150px;
+}
+
+.order-body-info ul,
+.order-body-status ul {
+    height: 150px;
+    padding: 25px 20px;
+    margin: 0;
+}
+
+
+/* .order-body-info ul li {
+    height: 50px;
+    line-height: 50px;
+} */
+
+.order-body-status ul li {
+    height: 33.33px;
+    line-height: 33.33px;
+}
