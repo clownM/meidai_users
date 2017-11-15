@@ -1,19 +1,4 @@
 $(document).ready(function() {
-    function IsPC() {
-        var userAgentInfo = navigator.userAgent;
-        var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
-        var flag = true;
-        for (var v = 0; v < Agents.length; v++) {
-            if (userAgentInfo.indexOf(Agents[v]) > 0) {
-                flag = false;
-
-                console.log("移动端");
-                break;
-            }
-        }
-        return flag;
-    }
-    IsPC();
     // 引入顶部导航
     $('.user_nav_content').load("usernavbar.html .user_nav", function() {
         $('#navleft').load("usernavbar.html .homepage", function() {
