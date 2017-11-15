@@ -24,9 +24,10 @@
 </head>
 
 <body>
-
+    <!-- PC端顶部导航 -->
+    <div class='navbar_pc'></div>
     <!-- 页面展示内容 -->
-    <div class="content">
+    <div class="content" id="content">
         <div class="tabs">
             <div class="tabs-head">
                 <ul class="tabs-ul">
@@ -37,33 +38,37 @@
                 </ul>
             </div>
             <div class="tabs-body" id="tabs-body">
-                <div class="tabs-contents active" id="all">
-                    <div class="order">
-                        <div class="order-top row">
-                            <div class="col-md-2 col-sm-3 col-xs-4">××门店</div>
-                            <div class="col-md-10 col-sm-9 col-xs-8">2017年11月11日&nbsp;12:30:00</div>
+                <div class="tabs-contents active">
+                    <div class="order" v-for="(order,index) in ordersArray">
+                        <!-- <div class="order-top row">
+                            <div class="col-md-2 col-sm-3 col-xs-4">{{ order.station }}</div>
+                            <div class="col-md-10 col-sm-9 col-xs-8">{{ order.orderCreateDate }}</div>
                         </div>
                         <div class="row order-body">
-                            <div class="order-body-img col-md-3 col-sm-3 col-xs-3">
-                                <!-- 眼镜图片 -->
-                                <img src="images/product/galileo_md18-01.png" alt="眼镜图片">
-                            </div>
-                            <div class="order-body-info col-md-5 col-sm-5 col-xs-5">
-                                <!-- 订单简介 -->
-                                <ul>
-                                    <li>颜色:</li>
-                                    <li>镜片:</li>
-                                    <li>材料:</li>
-                                    <li>刻字:</li>
-                                </ul>
-                            </div>
-                            <div class="order-body-status col-md-4 col-sm-4 col-xs-4">
-                                <!-- 状态查看 -->
-                                <ul>
-                                    <li>发货中</li>
-                                    <li>订单详情</li>
-                                    <li>查看物流</li>
-                                </ul>
+                            <table>
+                                <tr>
+                                    <td><img src="images/product/galileo_md18-01.png" alt="" style="max-width:80px"></td>
+                                    <td>卡其色</td>
+                                    <td><button class="">查看物流</button></td>
+                                </tr>
+                                <tr>
+                                    <td><img src="images/tui/c4.png" alt="" style="max-width:80px"></td>
+                                    <td>天空蓝</td>
+                                    <td><button class="to_order_details">订单详情</button></td>
+                                </tr>
+                            </table>
+                        </div> -->
+                        <div class="order-top">订单编号：{{ order.orderuuid }}</div>
+                        <div class="order-body">
+                            <img src="" alt="图片待定">
+                            <div class="appointmentdate">订单创建时间: {{ order.createdate }}</div>
+                            <div class="station">预约扫描地址：{{ order.station }}</div>
+                            <div class="appointmentdate">预约扫描时间：{{ order.appointmentdate }}</div>
+                            <div class="scandate">实际扫描时间：{{ order.scandate }}</div>
+                            <div class="status">订单状态：{{ order.status }}</div>
+                            <div class="order-footer">
+                                <button>查看物流</button>
+                                <button class="to_order_details">订单详情</button>
                             </div>
                         </div>
                     </div>
@@ -73,8 +78,8 @@
                 <div class="tabs-contents" id="daishouhuo">待收货</div>
             </div>
         </div>
-
     </div>
+
     <script src="res/jquery-3.1.0.min.js"></script>
     <script src="res/bootstrap-3.3.5/js/bootstrap.js"></script>
     <script src="res/vueJS/vue.js"></script>
