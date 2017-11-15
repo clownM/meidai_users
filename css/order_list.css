@@ -22,14 +22,14 @@
     display: block;
     width: 100%;
     height: 100%;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 2px solid #ccc;
     color: inherit;
 }
 
 .tabs-head ul li a:hover,
 .tabs-head ul li a.active {
     color: rgb(11, 227, 253);
-    border-bottom: 1px solid rgb(11, 227, 253);
+    border-bottom: 2px solid rgb(11, 227, 253);
 }
 
 .tabs-body {
@@ -41,7 +41,6 @@
 .tabs-body .tabs-contents {
     width: 100%;
     /* height: 300px; */
-    border: 1px solid #ccc;
     display: none;
 }
 
@@ -52,6 +51,11 @@
 .tabs-body .tabs-contents img {
     max-width: 100%;
     max-height: 150px;
+}
+
+.tabs-contents .order {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
 }
 
 .order .order-top {
@@ -84,13 +88,65 @@
     margin: 0;
 }
 
-
-/* .order-body-info ul li {
-    height: 50px;
-    line-height: 50px;
-} */
+.order-body-status,
+.order-body-status ul {
+    padding-right: 0;
+}
 
 .order-body-status ul li {
     height: 33.33px;
     line-height: 33.33px;
+}
+
+@media (min-width:992px) {
+    .tabs-head ul li {
+        width: 12%;
+    }
+    .order-body table tr td img {
+        max-height: 100%;
+        /* max-height: 100%; */
+    }
+}
+
+@media (min-width: 768px) and (max-width:991px) {
+    .tabs-head ul li {
+        width: 18%;
+    }
+}
+
+@media (max-width:767px) {
+    .tabs-head ul li {
+        width: 20%;
+    }
+}
+
+.order-body table {
+    width: 100%;
+    height: 150px;
+    text-align: center;
+}
+
+.oreder-body table tr {
+    width: 100%;
+    height: 75px;
+}
+
+.order-body table tr td img {
+    max-width: 50px;
+    /* max-height: 100%; */
+}
+
+.order-body table tr td:nth-child(2) {
+    text-align: left;
+}
+
+.order-body table tr td:nth-child(3) {
+    text-align: right;
+}
+
+.failorder {
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 40px;
 }

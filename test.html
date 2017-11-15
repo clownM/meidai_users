@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" id="uploaddata" enctype="multipart/form-data">
+        <input type="file" id="file">
+        <input type="button" value="上传" id="upload">
+    </form>
+    <script src="res/jquery-3.1.0.min.js"></script>
+    <script>
+        $(function() {
+
+
+            $("#upload").click(function() {
+
+
+                var formData = new FormData($("#uploaddata")[0]);
+                // console.log(new FormData($('#uploaddata')[0]));
+                // console.log($("#uploaddata").serialize());
+                $.ajax({
+                    url: "/data?action=upload&owneruuid=4d037b09bde02a08f449b9280d318720&type=config&body=",
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+                    async: false,
+                    // enctype: 'multipart/form-data',
+                    success: function(data) {
+                        console.log("1" + data)
+                    },
+                    error: function(data) {
+                        console.log("2" + data)
+                    }
+                })
+            })
+
+
+        })
+    </script>
+</body>
+
+</html>

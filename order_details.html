@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge,Chrome=1">
+    <meta name="description" content="MEIDAI">
+    <meta name="renderer" content="webkit">
+    <meta name="author" content="MEIDAI">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <title>订单详情</title>
+
+    <link rel="shortcut icon" href="images/logoico.ico">
+    <link rel="Bookmark" href="images/logoico.ico">
+    <link rel="stylesheet" href="res/bootstrap-3.3.5/css/bootstrap.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/order_details.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+      <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!-- PC端顶部导航 -->
+    <div class='navbar_pc'></div>
+    <!-- 页面展示内容 -->
+    <div class="content" id="content">
+        <div class="orderdetails">
+            <div class="header">
+                <!-- <div class="ordernumber"> 订单编号：<span v-text="ordernumbertxt"></span></div> -->
+                <div v-cloak> 订单编号:{{ ordernumbertxt }}</div>
+                <div class="header2">
+                    <div class="ordertime" v-cloak>下单时间：{{ ordertimetxt }}</div>
+                    <div class="status"> <span v-text=" orderstatus"> </div>
+                </div>
+
+            </div>
+
+            <div class="wuliu">
+                <!-- <div class="wuliuinfo">
+                    您的快递当前已到xx菜鸟驿站，请凭取货码及时取件
+                </div>
+                <div class="wuliudate">
+                    2017-11-13 17:00:00
+                </div> -->
+                |-----物流信息-----|
+            </div>
+            <div class="userinfo">
+                <!-- <div class="username">
+                    收货人:小明
+                </div>
+                <div class="userphone">
+                    电话:13512345678
+                </div>
+                <div class="useraddress">
+                    收货地址:浙江省杭州市西湖区剑桥公社F座
+                </div> -->
+                |-----收货人信息-----|
+            </div>
+            <div class="shop" v-text=" station"> </div>
+            <div class="orderinfo">
+                <table>
+                    <thead>验光参数</thead>
+                    <tbody>
+                        <tr>
+                            <th></th>
+                            <th>左眼</th>
+                            <th>右眼</th>
+                        </tr>
+                        <tr>
+                            <th>度数</th>
+                            <td v-text="left_degrees"></td>
+                            <td v-text="right_degrees"></td>
+                        </tr>
+                        <tr>
+                            <th>散光</th>
+                            <td v-text="left_cyl"></td>
+                            <td v-text="right_cyl"></td>
+                        </tr>
+                        <tr>
+                            <th>轴距</th>
+                            <td v-text="left_axis"></td>
+                            <td v-text="right_axis"></td>
+                        </tr>
+                        <tr>
+                            <th>瞳距</th>
+                            <td colspan="2" style="text-align:center"  v-text="pupilDistancs"></td>
+                        </tr>
+                    </tbody>               
+                </table>
+                <table>
+                    <thead>镜框参数</thead>
+                    <tbody>
+                        <tr>
+                            <th></th>
+                            <th>镜框</th>
+                            <th>镜腿</th>
+                        </tr>
+                        <tr>
+                            <th>镜型</th>
+                            <td class="glassshape"><img src="images/product/idra-01.png" alt=""></td>
+                            <td class="glassshape"><img src="images/tui/c3.png" alt=""></td>
+                        </tr>
+                        <tr>
+                            <th>颜色</th>
+                            <td>咖啡色</td>
+                            <td>藏青色</td>
+                        </tr>                          
+                    </tbody>
+                </table>
+                <table class="jingkuang2">
+                    <tr>
+                        <th>镜框比</th>
+                        <td colspan="3"  v-text="widthScale"></td>
+                    </tr>
+                    <tr>
+                        <th>鼻中位</th>
+                        <td colspan="3"  v-text="heightScale"></td>
+                    </tr>
+                    <tr>
+                        <th>鼻中宽</th>
+                        <td colspan="3"  v-text="bridgeSpanRatio"></td>
+                    </tr>
+                </table>
+                <table style="table-layout:fixed">
+                    <thead>刻字</thead>
+                    <tbody>
+                        <tr>        
+                            <th>镜框左</th>
+                            <td v-text="slotMessage1"></td>
+                            <th>镜框右</th>
+                            <td v-text="slotMessage2"></td>
+                        </tr>
+                        <tr>
+                            <th>镜腿</th>
+                            <td v-text="legMessage1"></td>
+                            <td v-text="legMessage2"></td>
+                            <td v-text="legMessage3"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="orderdate">
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <script src="res/jquery-3.1.0.min.js"></script>
+    <script src="res/bootstrap-3.3.5/js/bootstrap.js"></script>
+    <script src="res/vueJS/vue.js"></script>
+    <script src="js/fswear.js"></script>
+    <script src="js/order_details.js"></script>
+</body>
+<html>
