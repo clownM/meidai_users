@@ -1,13 +1,19 @@
+/* 样式统一 */
 * {
     margin: 0;
     padding: 0;
     font-family: '微软雅黑';
+    box-sizing: border-box;
 }
 
 body {
     height: 100%;
+    background-color: rgb(240, 240, 240);
+    color: #515151;
 }
-
+a{
+    color: inherit;
+}
 a:link,
 a:visited,
 a:hover,
@@ -19,9 +25,11 @@ ul li {
     list-style: none;
 }
 
-.content {
-    max-width: 992px;
+button{
+    border: none;
+    outline: none;
 }
+
 
 .btn-lg {
     width: 300px;
@@ -125,57 +133,14 @@ ul li {
     outline: none;
 }
 
-@media (min-width:992px) {
-    .content {
-        width: 70%;
-        margin: 60px auto;
-        height: 100%;
-    }
-}
-
-@media (min-width: 768px) and (max-width:991px) {
-    .content {
-        width: 80%;
-        margin: 60px auto;
-        height: 100%;
-    }
-}
-
-@media (max-width:767px) {
-    .content {
-        width: 100%;
-        margin: 60px auto;
-        height: 100%;
-    }
-}
-
-
-/*顶部导航*/
-
-
-/* #nav-top {
-    height: 5px;
-    width: 100%;
-    background: #1D1D1D;
-}
- */
-
-
+/* pc端顶部导航 */
 /*用户头像*/
-
 .nav-user-portrait {
     width: 50px;
     height: 50px;
     border-radius: 50%;
 }
-
-
 /*阴影 */
-
-.box-shadow {
-    box-shadow: 3px 3px 2px #D2D2D2
-}
-
 .navbar-default {
     background: #fff;
     border-top: 5px solid rgba(29, 29, 29, 0.8);
@@ -230,4 +195,121 @@ ul li {
 
 #logout>a:hover {
     cursor: pointer;
+}
+
+/* 移动APP页面顶部返回 */
+.top-fixed{
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+div.go-back{
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 1px solid rgb(240, 240, 240);
+    font-size: 18px;
+    background-color: #fff;
+}
+.go-back .icon-back{
+    width: 20px ;
+    height: 20px ;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 15px;
+    /* background-color: yellowgreen; */ 
+    background-image: url("/images/icons/向左.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.content{
+    background-color: rgb(240, 240, 240);
+}
+/* PC */
+@media (min-width:992px) {
+    .content {
+        width: 70%;
+        margin: 60px auto;
+        height: 100%;
+    }
+    div.go-back{
+        display: none;
+    }
+}
+
+
+/* 平板 */
+@media (min-width: 768px) and (max-width:991px) {
+    .body{
+        background-color: rgb(240, 240, 240);
+    }
+    .content {
+        width: 100%;
+        margin: 0 auto;
+        height: 100%;
+    }
+    /* 移动端底部tabs */
+    .user_tabs{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 80px;
+        border-top: 1px solid #ccc;
+        background-color: #fff;
+    }
+    .user_tabs_wrap{
+        width: 100%;
+        height: 80px;
+        display: flex;
+        justify-content: space-around;
+    }
+    .user_tabs_tab{
+        text-align:center;
+
+    }
+    .tab_icon{
+        width: 40px;
+        height: 40px;
+        margin-top: 10px;
+    }
+}
+
+/* 手机 */
+@media (max-width:767px) {
+    .body{
+        background-color: rgb(240, 240, 240);
+        /* font-size: 30px; */
+    }
+    .content {
+        width: 100%;
+        margin: 0 auto;
+        height: 100%;
+    }
+    /* 移动端底部tabs */
+    .user_tabs{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 60px;
+        border-top: 1px solid #ccc;
+        background-color: #fff;
+    }
+    .user_tabs_wrap{
+        width: 100%;
+        height: 60px;
+        display: flex;
+        justify-content: space-around;
+    }
+    .user_tabs_tab{
+        text-align:center;
+
+    }
+    .tab_icon{
+        width: 20px;
+        height: 20px;
+        margin-top: 10px;
+    }
 }

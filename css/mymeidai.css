@@ -1,0 +1,79 @@
+.userInfo{
+    width: 100%;
+    margin-top: 70px;
+    background-color: rgb(11,227,253);
+    padding: 20px 10px;
+    color: white;
+    /* display: flex;
+    justify-content: space-around; */
+}
+.userInfo .avatar{
+    width: 60px;
+    height: 60px;
+    float: left; 
+    margin-right: 10px;
+}
+.userInfo .avatar img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.userInfo .username-and-phone{
+    height: 60px;
+    display: inline-block;
+}
+.userInfo .username-and-phone p{
+    margin-bottom: 0;
+}
+p.username{
+    height: 40px;
+    line-height: 20px;
+    font-size: 30px;
+}
+p.phone{
+    height: 20px;
+    line-height: 20px;
+    font-size: 18px;
+}
+.userInfo .userInfo-right{
+    height: 60px;
+   float: right;
+}
+.userInfo .userInfo-right img{
+    width: 20px;
+    height: 20px;
+    margin-top: 20px;
+}
+
+.others-wrap{
+    margin-top: 10px;
+    width: 100%;
+}
+.others-wrap ul{
+    width: 100%;
+}
+.others-wrap ul li{
+    float: left;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #fff;
+    border-bottom: 1px solid rgb(240, 240, 240);
+    padding: 0 10px;
+}
+.others-wrap ul li a{
+    display: block;
+    width: 100%;
+    height: 50px;
+}
+.others-wrap ul li a span:nth-child(2){
+    font-size: 16px;
+}
+.others-wrap ul li a span:last-child{
+    float: right;
+}
+.others-wrap ul li img{
+    width: 20px;
+    height: 20px;
+    margin-top: -4px;       
+}

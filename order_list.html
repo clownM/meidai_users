@@ -9,11 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
     <title>订单列表</title>
 
-    <link rel="shortcut icon" href="images/logoico.ico">
-    <link rel="Bookmark" href="images/logoico.ico">
-    <link rel="stylesheet" href="res/bootstrap-3.3.5/css/bootstrap.css" />
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/order_list.css">
+    <link rel="shortcut icon" href="/images/logo/logoico.ico">
+    <link rel="Bookmark" href="/images/logo/logoico.ico">
+    <link rel="stylesheet" href="/res/bootstrap-3.3.5/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/order_list.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
@@ -25,65 +25,59 @@
 
 <body>
     <!-- PC端顶部导航 -->
-    <div class='navbar_pc'></div>
+    <div class='navbar-pc'></div>
     <!-- 页面展示内容 -->
     <div class="content" id="content">
-        <div class="tabs">
-            <div class="tabs-head">
-                <ul class="tabs-ul">
-                    <li><a class="active" href="#">全部</a> </li>
-                    <li><a href="#">待付款</a></li>
-                    <li><a href="#">待发货</a></li>
-                    <li><a href="#">待收货</a></li>
-                </ul>
+        <div class="top-fixed">
+            <div class="go-back">
+                <span class="icon-back"></span>
+                <p>我的订单</p>
             </div>
-            <div class="tabs-body" id="tabs-body">
-                <div class="tabs-contents active">
-                    <div class="order" v-for="(order,index) in ordersArray">
-                        <!-- <div class="order-top row">
-                            <div class="col-md-2 col-sm-3 col-xs-4">{{ order.station }}</div>
-                            <div class="col-md-10 col-sm-9 col-xs-8">{{ order.orderCreateDate }}</div>
-                        </div>
-                        <div class="row order-body">
-                            <table>
-                                <tr>
-                                    <td><img src="images/product/galileo_md18-01.png" alt="" style="max-width:80px"></td>
-                                    <td>卡其色</td>
-                                    <td><button class="">查看物流</button></td>
-                                </tr>
-                                <tr>
-                                    <td><img src="images/tui/c4.png" alt="" style="max-width:80px"></td>
-                                    <td>天空蓝</td>
-                                    <td><button class="to_order_details">订单详情</button></td>
-                                </tr>
-                            </table>
-                        </div> -->
-                        <div class="order-top">订单编号：{{ order.orderuuid }}</div>
-                        <div class="order-body">
-                            <img src="" alt="图片待定">
-                            <div class="appointmentdate">订单创建时间: {{ order.createdate }}</div>
-                            <div class="station">预约扫描地址：{{ order.station }}</div>
-                            <div class="appointmentdate">预约扫描时间：{{ order.appointmentdate }}</div>
-                            <div class="scandate">实际扫描时间：{{ order.scandate }}</div>
-                            <div class="status">订单状态：{{ order.status }}</div>
-                            <div class="order-footer">
-                                <button>查看物流</button>
-                                <button class="to_order_details">订单详情</button>
-                            </div>
-                        </div>
+            <div class="tabs-head">
+                    <ul class="tabs-ul">
+                        <li><a class="active" href="#">全部</a> </li>
+                        <li><a href="#">待扫描</a></li>
+                        <li><a href="#">待付款</a></li>
+                        <li><a href="#">待收货</a></li>
+                        <li><a href="#">已完成</a></li>
+                        <div id="clearBoth"></div>
+                    </ul>
+            </div>
+        </div>
+
+        <div class="tabs-body" id="tabs-body">
+            <div class="tabs-contents active">
+                <div class="order" v-for="(order,index) in ordersArray">
+                    <div class="order-header">
+                        <div class="orderno" v-text="order.orderno"></div>
+                        <div class="status" v-text="order.status"></div>
+                    </div>
+                    <div class="order-body">
+                        <div class="createdate">订单创建时间: <span v-text="order.createdate"></span></div>
+                        <div class="station">预约扫描地址：<span v-text="order.station"></span></div>
+                        <div class="appointmentdate">预约扫描时间：<span v-text="order.appointmentdate"></span></div>
+                        <div class="scandate">实际扫描时间：<span v-text="order.scandate"></span></div>          
+                    </div>
+                    <div class="order-footer">
+                        <button>查看物流</button>
+                        <button class="to_order_details">订单详情</button>
                     </div>
                 </div>
-                <div class="tabs-contents" id="daifukuan">待付款</div>
-                <div class="tabs-contents" id="daifahuo">待发货</div>
-                <div class="tabs-contents" id="daishouhuo">待收货</div>
             </div>
+            <div class="tabs-contents" id="daifukuan">待付款</div>
+            <div class="tabs-contents" id="daifahuo">待发货</div>
+            <div class="tabs-contents" id="daishouhuo">待收货</div>
         </div>
     </div>
 
-    <script src="res/jquery-3.1.0.min.js"></script>
-    <script src="res/bootstrap-3.3.5/js/bootstrap.js"></script>
-    <script src="res/vueJS/vue.js"></script>
-    <script src="js/fswear.js"></script>
-    <script src="js/order_list.js"></script>
+
+    <!-- 移动端底部tabs -->
+    <!-- <div class="tabs_mobile"></div> -->
+
+    <script src="/res/jquery-3.1.0.min.js"></script>
+    <script src="/res/bootstrap-3.3.5/js/bootstrap.js"></script>
+    <script src="/res/vueJS/vue.js"></script>
+    <script src="/js/fswear.js"></script>
+    <script src="/js/order_list.js"></script>
 </body>
 <html>

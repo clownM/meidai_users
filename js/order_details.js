@@ -180,20 +180,6 @@ function isOwnEmpty(obj, key) {
     return tmp_key;
 };
 
-
-/**
- * 哈希
- * */
-function hashCode(str) {
-    var hash = 5381;
-    for (i = 0; i < str.length; i++) {
-        char = str.charCodeAt(i);
-        hash = ((hash << 5) + hash) + char; /* hash * 33 + c */
-    }
-    return Math.abs(hash);
-}
-
-
 /**
  * 创建已扫描的数据
  * */
@@ -313,7 +299,7 @@ function alreadyscan(param1, param2) {
         /**
          * 订单编号 
          **/
-        _userordertext.ordertimetxt = create_ordertime._year + "." + create_ordertime._month + "." + create_ordertime._day;
+        _userordertext.ordertimetxt = create_ordertime._year + "年" + create_ordertime._month + "月" + create_ordertime._day + "日 " + create_ordertime._hour + ":" + create_ordertime._minute+ ":" + create_ordertime._second;
         _userordertext.ordernumbertxt = "" + create_ordertime._year + create_ordertime._month + create_ordertime._day + _lastOrdernumber;
         _userordertext.orderstatus = _orderstatus;
 
@@ -329,14 +315,14 @@ function alreadyscan(param1, param2) {
         _userordertext.right_degrees = isOwnEmpty(glass_collecteddata_data, 'right_degrees');
         _userordertext.right_cyl = isOwnEmpty(glass_collecteddata_data, 'right_cyl');
         _userordertext.right_axis = isOwnEmpty(glass_collecteddata_data, 'right_axis');
-        _userordertext.PupilDistance = isOwnEmpty(glass_config_data, 'PupilDistance');
+        _userordertext.pupilDistance = isOwnEmpty(glass_config_data, 'PupilDistance');
 
         /**
          * 镜框参数
          **/
-        _userordertext.WidthScale = isOwnEmpty(glass_config_data, 'WidthScale');
-        _userordertext.HeightScale = isOwnEmpty(glass_config_data, 'HeightScale');
-        _userordertext.BridgeSpanRatio = isOwnEmpty(glass_config_data, 'BridgeSpanRatio');
+        _userordertext.widthScale = isOwnEmpty(glass_config_data, 'WidthScale');
+        _userordertext.heightScale = isOwnEmpty(glass_config_data, 'HeightScale');
+        _userordertext.bridgeSpanRatio = isOwnEmpty(glass_config_data, 'BridgeSpanRatio');
 
         /**
          * 眼镜的框镜型
@@ -355,18 +341,18 @@ function alreadyscan(param1, param2) {
         /**
          *眼镜镜腿镜型
          **/
-        if (!glass_config_data.LegProfile) {
-            _userordertext.LegProfile = 'c3';
+        if (typeof(glass_config_data.LegProfile) == "undefined") {
+            _userordertext.legProfile = 'c3';
         } else {
-            _userordertext.LegProfile = glass_config_data.LegProfile;
+            _userordertext.legProfile = glass_config_data.LegProfile;
         }
         /**
          *眼镜镜腿颜色
          **/
         if (!glass_config_data.LegColor) {
-            _userordertext.LegColor = '#282828';
+            _userordertext.legColor = '#282828';
         } else {
-            _userordertext.LegColor = glass_color(glass_config_data.LegColor);
+            _userordertext.legColor = glass_color(glass_config_data.LegColor);
         }
 
 
@@ -374,9 +360,9 @@ function alreadyscan(param1, param2) {
          *眼镜镜框颜色
          **/
         if (!glass_config_data.FrameColor) {
-            _userordertext.FrameColor = '#282828';
+            _userordertext.frameColor = '#282828';
         } else {
-            _userordertext.FrameColor = glass_color(isOwnEmpty(glass_config_data.FrameColor));
+            _userordertext.frameColor = glass_color(isOwnEmpty(glass_config_data.FrameColor));
         }
 
 
@@ -384,11 +370,11 @@ function alreadyscan(param1, param2) {
          *刻字
          **/
         /****** 镜框 ******/
-        _userordertext.SlotMessage = isOwnEmpty(glass_config_data, 'SlotMessage');
+        _userordertext.slotMessage = isOwnEmpty(glass_config_data, 'SlotMessage');
         /****** 镜腿 ******/
-        _userordertext.LegMessage = isOwnEmpty(glass_config_data, 'LegMessage');
+        _userordertext.legMessage = isOwnEmpty(glass_config_data, 'LegMessage');
 
-        console.log(_userordertext)
+        // console.log(_userordertext)
         orderobj = _userordertext;
     }
     return orderobj;
@@ -398,28 +384,39 @@ $(function() {
     new Vue({
         el: "#content",
         data: {
-            ordertimetxt: "",
-            ordernumbertxt: "",
-            orderstatus: "",
-            station: "",
-            right_degrees: "",
-            right_cyl: "",
-            right_axis: "",
-            left_degrees: "",
-            left_cyl: "",
-            left_axis: "",
-            pupilDistancs: "",
-            widthScale: "",
-            heightScale: "",
-            bridgeSpanRatio: "",
-            slotMessage1: "",
+            ordertimetxt: "", //订单创建时间
+            ordernumbertxt: "", //订单编号
+            orderstatus: "", //订单状态
+            station: "", //扫描预约门店
+            right_degrees: "", //右眼度数
+            right_cyl: "", //右眼散光
+            right_axis: "", //右眼轴距
+            left_degrees: "", //左眼度数   
+            left_cyl: "", //左眼散光
+            left_axis: "", //左眼轴距
+            pupilDistancs: "", //瞳距
+            widthScale: "", //镜框比
+            heightScale: "", //鼻中位
+            bridgeSpanRatio: "", //鼻中宽   
+            slotMessage1: "", //镜框刻字
             slotMessage2: "",
-            legMessage1: "",
+            legMessage1: "", //镜腿刻字
             legMessage2: "",
             legMessage3: "",
+            lensProfileFile: "",
+            lensProfileFile_img: {},
+            frameColor: "", //镜框颜色
+            legProfile: "", //镜框图片
+            legColor: "", //镜腿颜色
         },
         mounted: function() {
             this.get_order_details();
+            this.$nextTick(() => {
+                //移动端顶部返回
+                $(".go-back").on("click",function(){
+                    window.location.href="/order_list.html";
+                });
+            })
         },
         methods: {
             get_order_details: function() {
@@ -453,11 +450,10 @@ $(function() {
                         dataType: "json",
                         async: false,
                         success: function(orderData) {
-                            console.log();
                             var station = orderData.station;
                             resultobj = alreadyscan(orderData, orderuuid_hash);
                             resultobj.station = station;
-                            // console.log(resultobj.orderstatus);
+                            console.log(resultobj);
                         },
                         error: function() {
 
@@ -482,6 +478,13 @@ $(function() {
                     this.legMessage1 = resultobj.legMessage1;
                     this.legMessage2 = resultobj.legMessage2;
                     this.legMessage3 = resultobj.legMessage3;
+
+                    this.lensProfileFile_img.top = "-"+resultobj.lensprofilefile_img.top;
+                    this.lensProfileFile_img.left = "-"+resultobj.lensprofilefile_img.left;
+                    this.frameColor = resultobj.frameColor;
+
+                    this.legProfile = "images/tui/"+resultobj.legProfile+".png";
+                    this.legColor = resultobj.legColor;
                 } else {
                     window.location.href = "";
                 }

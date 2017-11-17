@@ -120,17 +120,41 @@ function Config2Json(config) {
     return config_json;
 }
 
+/**
+ * 哈希
+ * */
+function hashCode(str) {
+    var hash = 5381;
+    for (i = 0; i < str.length; i++) {
+        char = str.charCodeAt(i);
+        hash = ((hash << 5) + hash) + char; /* hash * 33 + c */
+    }
+    return Math.abs(hash);
+}
+
+function joinzero(num){
+    if(num < 10){
+        return "0"+num;
+    }else{
+        return ""+num;
+    }
+}
 //将格式RFC2822时间转化时间格式
 function create_time(ordertime) {
-    var _ordertime = ordertime.replace(/-\w*/g, '');
-    var _date = new Date(_ordertime);
-    var order_date = {};
-    order_date._year = _date.getFullYear();
-    order_date._month = _date.getMonth() + 1;
-    order_date._day = _date.getDate();
-    order_date._hour = _date.getHours();
-    order_date._minute = _date.getMinutes();
-    return order_date;
+    if(!(ordertime == "")){
+        var _ordertime = ordertime.replace(/-\w*/g, '');
+        var _date = new Date(_ordertime);
+        var order_date = {};
+        order_date._year = joinzero(_date.getFullYear()) ;
+        order_date._month =joinzero( _date.getMonth() + 1);
+        order_date._day = joinzero(_date.getDate());
+        order_date._hour =joinzero( _date.getHours() + 8);
+        order_date._minute =joinzero(_date.getMinutes());
+        order_date._second = joinzero(_date.getSeconds());
+        return order_date;
+    }else{
+        return "暂无信息";
+    }
 }
 
 
@@ -149,8 +173,7 @@ function IsPC() {
 }
 $(document).ready(function() {
     if (IsPC()) {
-        $('.navbar_pc').load("navbar.html .user_nav", function() {
-
+        $('.navbar-pc').load("navbar.html .user_nav", function() {
             /****** 设置头像和用户名 ******/
             // console.log(getCookie("uuid"))
             if (getCookie("uuid") != '') {
@@ -239,6 +262,10 @@ $(document).ready(function() {
             //     setCookie("isgoto", "false");
             //     setCookie("checkbox", "false");
             // });
+        })
+    }else{
+        $('.tabs-mobile').load("/navbar.html .user_tabs", function() {
+            
         })
     }
 });

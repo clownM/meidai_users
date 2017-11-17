@@ -848,7 +848,7 @@ $(document).ready(function() {
     //页面跳转
     //-----------------------------
     function goTohtml() {
-        window.location.href = 'order_list.html';
+        window.location.href = '/index.html';
     }
     //-----------------------------
     //Cookie

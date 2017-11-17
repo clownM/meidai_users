@@ -29,7 +29,6 @@ function get_status(parm1) {
 }
 
 $(function() {
-
     //将订单的uuid全部放入数组中
     var order_uuid_arr = [];
 
@@ -50,6 +49,11 @@ $(function() {
                     setCookie("orderuuid", order_uuid_arr[index], 1);
                     // console.log(getCookie("orderuuid"));
                     window.location.href = "order_details.html";
+                });
+
+                //移动端顶部返回
+                $(".go-back").on("click",function(){
+                    window.location.href="/mymeidai.html";
                 });
             })
         },
@@ -108,19 +112,41 @@ $(function() {
                                         dataType: "json",
                                         async: false,
                                         success: function(orderData) {
-                                            /* console.log(userData.orders);
-                                            console.log(orderData); */
                                             var orderuuidarr = userData.orders;
                                             for (var i = 0; i < orderuuidarr.length; i++) {
                                                 var orderobj = orderData[orderuuidarr[i]];
+                                                // console.log(orderobj.scandate);
                                                 var orderUuid = orderuuidarr[i]; //订单uuid
-                                                var thedate = create_time(orderobj.createdate);
-                                                var orderCreateDate = thedate._year + "年" + thedate._month + "月" + thedate._day + "日 " + thedate._hour + ":" + thedate._minute; //订单创建日期
-                                                var station = orderobj.station; //用户选择的扫描站点
-                                                var appointmentdate = orderobj.appointmentdate; //用户预约的扫描时间
-                                                var scandate = orderobj.scandate; //实际的扫描时间
-                                                var status = orderobj.status; //订单的状态
-                                                ordersArray.push({ "orderuuid": orderUuid, "createdate": orderCreateDate, "station": station, "appointmentdate": appointmentdate, "scandate": scandate, "status": status });
+                                                var thecreatedate = create_time(orderobj.createdate);
+                                                if(!(thecreatedate == "暂无信息")){
+                                                    //订单编号
+                                                    var orderno = ""+thecreatedate._year+thecreatedate._month+thecreatedate._day+hashCode(orderUuid);
+                                                    //订单创建日期
+                                                    var orderCreateDate = thecreatedate._year + "-" + thecreatedate._month + "-" + thecreatedate._day + " " + thecreatedate._hour + ":" + thecreatedate._minute+ ":" + thecreatedate._second
+                                                }else{
+                                                    var orderno = "wrong";
+                                                    var orderCreateDate = "wrong"
+                                                }
+                                                
+                                                //用户选择的扫描站点
+                                                var station = orderobj.station;
+                                                if(station == ""){
+                                                    station = "暂无信息"
+                                                }
+                                                //用户预约的扫描时间
+                                                var appointmentdate= create_time(orderobj.appointmentdate);
+                                                if(!(appointmentdate == "暂无信息")){
+                                                    appointmentdate =  appointmentdate._year + "-" + appointmentdate._month + "-" + appointmentdate._day + " " + 
+                                                    appointmentdate._hour + ":" + appointmentdate._minute+ ":" + appointmentdate._second
+                                                }
+                                               //实际的扫描时间
+                                                var scandate= create_time(orderobj.scandate);
+                                                if(!(scandate == "暂无信息")){
+                                                    scandate = scandate._year + "-" + scandate._month + "-" + scandate._day + " " + scandate._hour + ":" + scandate._minute+ ":" + scandate._second
+                                                }
+                                                //订单的状态
+                                                var status = orderobj.status; 
+                                                ordersArray.push({ "orderno": orderno, "createdate": orderCreateDate, "station": station, "appointmentdate": appointmentdate, "scandate": scandate, "status": status });
                                                 order_uuid_arr.push(orderUuid);
                                             }
                                         },
