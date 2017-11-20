@@ -46,7 +46,7 @@
         </div>
 
         <div class="tabs-body" id="tabs-body">
-            <div class="tabs-contents active">
+            <div class="tabs-contents">
                 <div class="order" v-for="(order,index) in ordersArray">
                     <div class="order-header">
                         <div class="orderno" v-text="order.orderno"></div>
@@ -56,18 +56,43 @@
                         <div class="createdate">订单创建时间: <span v-text="order.createdate"></span></div>
                         <div class="station">预约扫描地址：<span v-text="order.station"></span></div>
                         <div class="appointmentdate">预约扫描时间：<span v-text="order.appointmentdate"></span></div>
-                        <div class="scandate">实际扫描时间：<span v-text="order.scandate"></span></div>          
+                        <div class="scandate">实际扫描时间：<span v-text="order.scandate"></span></div>       
+                        <div>{{ order.deals }}</div>   
                     </div>
                     <div class="order-footer">
+                        <button>取消预约</button>
                         <button>查看物流</button>
                         <button class="to_order_details">订单详情</button>
                     </div>
                 </div>
             </div>
-            <div class="tabs-contents" id="daifukuan">待付款</div>
+            <!-- <div class="tabs-contents" id="daifukuan">待付款</div>
             <div class="tabs-contents" id="daifahuo">待发货</div>
-            <div class="tabs-contents" id="daishouhuo">待收货</div>
+            <div class="tabs-contents" id="daishouhuo">待收货</div> -->
+            <div class="tabs-contents active div-toscan">
+                <div class="order" v-for="(order,index) in toscan_array">
+                    <div class="order-header">
+                        <div class="orderno" v-text="order.orderno"></div>
+                        <div class="status" v-text="order.status"></div>
+                    </div>
+                    <div class="order-body">
+                        <div class="createdate">订单创建时间: <span v-text="order.createdate"></span></div>
+                        <div class="station">预约扫描地址：<span v-text="order.station"></span></div>
+                        <div class="appointmentdate">预约扫描时间：<span v-text="order.appointmentdate"></span></div>
+                        <div class="scandate">实际扫描时间：<span v-text="order.scandate"></span></div>       
+                        <div>{{ order.deals }}</div>   
+                    </div>
+                    <div class="order-footer">
+                        <button class="cancelOrder">取消预约</button>
+                    </div>
+                </div>
+            </div>
         </div>
+        
+        <!-- <div class="tabs-contents" id="daifukuan">待付款</div>
+        <div class="tabs-contents" id="daifahuo">待发货</div>
+        <div class="tabs-contents" id="daishouhuo">待收货</div> -->
+    </div>
     </div>
 
 

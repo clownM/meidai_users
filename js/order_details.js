@@ -414,7 +414,8 @@ $(function() {
             this.$nextTick(() => {
                 //移动端顶部返回
                 $(".go-back").on("click",function(){
-                    window.location.href="/order_list.html";
+                    // window.location.href="/order_list.html";
+                    history.back();
                 });
             })
         },

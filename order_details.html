@@ -33,16 +33,14 @@
             </div>
         </div>
         <div class="orderdetails">
-            <div class="header">
-                <!-- <div class="ordernumber"> 订单编号：<span v-text="ordernumbertxt"></span></div> -->
-                <div v-cloak> 订单编号:{{ ordernumbertxt }}</div>
+            <!-- <div class="header">
                 <div class="header2">
-                    <div class="ordertime" v-cloak>下单时间：{{ ordertimetxt }}</div>
+                    <div v-cloak> 订单编号：{{ ordernumbertxt }}</div>
                     <div class="status"> <span v-text=" orderstatus"> </div>
                 </div>
-
-            </div>
-
+                <div class="ordertime" v-cloak>下单时间：{{ ordertimetxt }}</div>
+            </div> -->
+            <div class="status"> <span v-text=" orderstatus"> </div>
             <div class="wuliu">
                 <!-- <div class="wuliuinfo">
                     您的快递当前已到xx菜鸟驿站，请凭取货码及时取件
@@ -149,7 +147,10 @@
                         <td v-text="legMessage3"></td>
                     </tr>
                 </table>
-                <div class="orderdate"></div>
+            </div>
+            <div class="orderdate">
+                <div class="ordernumber" v-cloak> 订单编号：{{ ordernumbertxt }}</div>      
+                <div class="ordertime" v-cloak>下单时间：{{ ordertimetxt }}</div>
             </div>
         </div>
     </div>

@@ -132,6 +132,7 @@ function hashCode(str) {
     return Math.abs(hash);
 }
 
+//将格式RFC2822时间转化时间格式
 function joinzero(num){
     if(num < 10){
         return "0"+num;
@@ -139,7 +140,6 @@ function joinzero(num){
         return ""+num;
     }
 }
-//将格式RFC2822时间转化时间格式
 function create_time(ordertime) {
     if(!(ordertime == "")){
         var _ordertime = ordertime.replace(/-\w*/g, '');
@@ -158,6 +158,8 @@ function create_time(ordertime) {
 }
 
 
+
+
 // 判定移动端与PC
 function IsPC() {
     var userAgentInfo = navigator.userAgent;
@@ -172,6 +174,11 @@ function IsPC() {
     return flag;
 }
 $(document).ready(function() {
+
+    $(".go-back").click(function(){
+        history.back();
+    });
+
     if (IsPC()) {
         $('.navbar-pc').load("navbar.html .user_nav", function() {
             /****** 设置头像和用户名 ******/
