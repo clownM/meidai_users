@@ -157,7 +157,39 @@ function create_time(ordertime) {
     }
 }
 
-
+// 获取订单状态
+function get_status(parm1) {
+    var _status;
+    switch (parm1) {
+        case "toconfirm":
+            _status = "扫描未检查";
+            break;
+        case "toscan":
+            _status = "等待扫描";
+            break;
+        case "todeal":
+            _status = "确认";
+            break;
+        case "cancelled":
+            _status = "已取消";
+            break;
+        case "topay":
+            _status = "待支付";
+            break;
+        case "printing":
+            _status = "生产中";
+            break;
+        case "delivering":
+            _status = "已发货";
+            break;  
+        case "done":
+            _status = "交易完成";
+            break;  
+        default:
+            _status = "未知";
+    }
+    return _status;
+}
 
 
 // 判定移动端与PC

@@ -130,11 +130,6 @@ function glass_color(color) {
     return tmp_material;
 }
 /**
- * 眼镜的颜色 END
- **/
-
-
-/**
  *得到色值
  * */
 function get_color(parm1) {
@@ -143,26 +138,6 @@ function get_color(parm1) {
     _getHexarr.splice(0, 1);
     var _getcolor = _getHexarr.reverse().join("");
     return _getcolor;
-}
-/**
- * 得到订单状态
- * */
-function get_status(parm1) {
-    var _status;
-    switch (parm1) {
-        case "toconfirm":
-            _status = "扫描未检查";
-            break;
-        case "toscan":
-            _status = "等待扫描";
-            break;
-        case "todeal":
-            _status = "确认";
-            break;
-        default:
-            _status = "未知";
-    }
-    return _status;
 }
 
 /**
@@ -192,7 +167,6 @@ function alreadyscan(param1, param2) {
     load_collecteddata_data();
 
     function load_collecteddata_data() {
-
         var tmp_collecteddata = param1.collecteddata;
         // console.log(tmp_collecteddata)
         if (tmp_collecteddata != '') {
@@ -201,13 +175,10 @@ function alreadyscan(param1, param2) {
                 glass_collecteddata_data[i] = tmp_collecteddata[i];
             }
         }
-
     }
-
 
     glass_config_data = {};
     if (!glass_config_data.PupilDistance) {} else {
-        // glass_config_data.PupilDistance = glass_collecteddata_data.pupil_dist;
         glass_config_data.PupilDistance = glass_collecteddata_data.PupilDistance;
     }
 
@@ -243,7 +214,7 @@ function alreadyscan(param1, param2) {
             async: false,
             // dataType: 'text',
             url: "/data",
-            success: function(dt) {
+            success: function (dt) {
                 if (dt.result != 'false' && dt != '') {
                     var config_in_json = Config2Json(dt);
                     for (var i in config_in_json) {
@@ -253,7 +224,7 @@ function alreadyscan(param1, param2) {
                     load_params_data();
                 }
             },
-            error: function() {}
+            error: function () {}
         })
     }
 
@@ -271,7 +242,7 @@ function alreadyscan(param1, param2) {
             async: false,
             // dataType: 'json',
             url: "/data",
-            success: function(dte) {
+            success: function (dte) {
                 // console.log(dte)
                 if (JSON.parse(dte) && JSON.parse(dte).result != 'false' && dte != '') {
                     var tmp_params = JSON.parse(dte);
@@ -280,18 +251,13 @@ function alreadyscan(param1, param2) {
                     }
                 }
             },
-            error: function() {}
+            error: function () {}
         })
         disposal_data()
     }
 
     function disposal_data() {
-
         var tmp_collecteddata = isOwnEmpty(glass_collecteddata_data, 'sdf');
-        // var tmp_sdf = glass_collecteddata_data.hasOwnProperty('sdf')? glass_collecteddata_data.sdf : '';
-        // console.log(tmp_sdf)
-
-
         var _lastOrdernumber = param2;
         var create_ordertime = create_time(param1.createdate);
         var _orderstatus = get_status(param1.status);
@@ -299,12 +265,9 @@ function alreadyscan(param1, param2) {
         /**
          * 订单编号 
          **/
-        _userordertext.ordertimetxt = create_ordertime._year + "年" + create_ordertime._month + "月" + create_ordertime._day + "日 " + create_ordertime._hour + ":" + create_ordertime._minute+ ":" + create_ordertime._second;
+        _userordertext.ordertimetxt = create_ordertime._year + "年" + create_ordertime._month + "月" + create_ordertime._day + "日 " + create_ordertime._hour + ":" + create_ordertime._minute + ":" + create_ordertime._second;
         _userordertext.ordernumbertxt = "" + create_ordertime._year + create_ordertime._month + create_ordertime._day + _lastOrdernumber;
         _userordertext.orderstatus = _orderstatus;
-
-        // console.log(_userordertext);
-
         /**
          * 验光参数 
          **/
@@ -341,7 +304,7 @@ function alreadyscan(param1, param2) {
         /**
          *眼镜镜腿镜型
          **/
-        if (typeof(glass_config_data.LegProfile) == "undefined") {
+        if (typeof (glass_config_data.LegProfile) == "undefined") {
             _userordertext.legProfile = 'c3';
         } else {
             _userordertext.legProfile = glass_config_data.LegProfile;
@@ -355,7 +318,6 @@ function alreadyscan(param1, param2) {
             _userordertext.legColor = glass_color(glass_config_data.LegColor);
         }
 
-
         /**
          *眼镜镜框颜色
          **/
@@ -364,7 +326,6 @@ function alreadyscan(param1, param2) {
         } else {
             _userordertext.frameColor = glass_color(isOwnEmpty(glass_config_data.FrameColor));
         }
-
 
         /**
          *刻字
@@ -380,12 +341,12 @@ function alreadyscan(param1, param2) {
     return orderobj;
 }
 
-$(function() {
+$(function () {
     new Vue({
         el: "#content",
         data: {
             ordertimetxt: "", //订单创建时间
-            ordernumbertxt: "", //订单编号
+            ordernumbertxt: "", //order编号
             orderstatus: "", //订单状态
             station: "", //扫描预约门店
             right_degrees: "", //右眼度数
@@ -408,19 +369,23 @@ $(function() {
             frameColor: "", //镜框颜色
             legProfile: "", //镜框图片
             legColor: "", //镜腿颜色
+
+            company: "",    //快递公司
+            postid: ""      //快递单号
+
         },
-        mounted: function() {
+        mounted: function () {
             this.get_order_details();
             this.$nextTick(() => {
                 //移动端顶部返回
-                $(".go-back").on("click",function(){
+                $(".go-back").on("click", function () {
                     // window.location.href="/order_list.html";
                     history.back();
                 });
             })
         },
         methods: {
-            get_order_details: function() {
+            get_order_details: function () {
                 var resultobj;
                 if (getCookie("uuid") != "" && getCookie("orderuuid") != "") {
                     var orderuuid = getCookie("orderuuid");
@@ -450,13 +415,63 @@ $(function() {
                         data: order_data,
                         dataType: "json",
                         async: false,
-                        success: function(orderData) {
+                        success: function (orderData) {
                             var station = orderData.station;
                             resultobj = alreadyscan(orderData, orderuuid_hash);
                             resultobj.station = station;
-                            console.log(resultobj);
+
+                            var dealobj = {
+                                "action": "query",
+                                "uuid": dealuuid,
+                                "createdate": "",
+                                "price": "",
+                                "status": "",
+                                "owneruuid": "",
+                                "config_literal": "",
+                                "printdate": "",
+                                "delivery": "",
+                                "deliverydate": "",
+                                "acceptdate": "",
+                                'params': '',
+                                "config": "",
+                                'paymentstatus': '',
+                                "discount": '',
+                                "genprint": '',
+                            };
+                            $.ajax({
+                                type: "post",
+                                data: dealobj,
+                                dataType: "json",
+                                async: false,
+                                url: "/deal",
+                                success: function (dt) {
+                                    var price = dt.price;
+                                    resultobj.price = price;
+
+                                    var delivery = dt.delivery;
+                                    if (delivery == "") {
+                                        //没有快递信息
+                                    } else {
+                                        delivery = JSON.parse(delivery);
+                                        if (delivery.postprocessing_delivery == undefined) {
+                                            var courier_company = delivery.production_delivery.courier_company;
+                                            var courier_number = delivery.production_delivery.courier_number;
+                                            resultobj.company = courier_company;
+                                            resultobj.postid = courier_number;
+                                        } else {
+                                            var courier_company = delivery.postprocessing_delivery.courier_company;
+                                            var courier_number = delivery.postprocessing_delivery.courier_number;
+                                            resultobj.company = courier_company;
+                                            resultobj.postid = courier_number;
+                                        }
+                                    }
+                                },
+                                error: function (er) {
+
+                                }
+                            });
                         },
-                        error: function() {
+                        error: function () {
 
                         }
                     });
@@ -480,15 +495,66 @@ $(function() {
                     this.legMessage2 = resultobj.legMessage2;
                     this.legMessage3 = resultobj.legMessage3;
 
-                    this.lensProfileFile_img.top = "-"+resultobj.lensprofilefile_img.top;
-                    this.lensProfileFile_img.left = "-"+resultobj.lensprofilefile_img.left;
+                    this.lensProfileFile_img.top = "-" + resultobj.lensprofilefile_img.top;
+                    this.lensProfileFile_img.left = "-" + resultobj.lensprofilefile_img.left;
                     this.frameColor = resultobj.frameColor;
 
-                    this.legProfile = "images/tui/"+resultobj.legProfile+".png";
+                    this.legProfile = "/images/tui/" + resultobj.legProfile + ".png";
                     this.legColor = resultobj.legColor;
+
+                    this.company = resultobj,company;
+                    this.postid = resultobj.postid;
                 } else {
                     window.location.href = "";
                 }
+            },
+            // 快递查询
+            express_check: function (company, postid) {
+                var expressobj;
+                var obj = {
+                    "action": "query",
+                    "postid": postid,
+                    "company": company
+                }
+                $.ajax({
+                    url: "/express",
+                    type: "post",
+                    data: obj,
+                    success: function (data) {
+                        var data = JSON.parse(data)
+                        var msg = JSON.parse(data.express)
+                        var express_state;
+                        switch (msg.state) {
+                            case '0':
+                                express_state = '运输中';
+                                break;
+                            case '1':
+                                express_state = '揽件中';
+                                break;
+                            case '2':
+                                express_state = '疑难';
+                                break;
+                            case '3':
+                                express_state = '已签收';
+                                break;
+                            case '4':
+                                express_state = '退签';
+                                break;
+                            case '5':
+                                express_state = '派件中';
+                                break;
+                            default:
+                                express_state = '没有快递信息';
+                        }
+                        var length = msg.data.length;
+                        expressobj.date = msg.data[length-1].time;
+                        express.context = msg.data[length-1].context;
+                    },
+                    error: function () {
+                        console.log("请查看网络");
+                    }
+                })
+                return expressobj;
             }
         }
     });

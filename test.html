@@ -9,21 +9,105 @@
 </head>
 
 <body>
-    
+    <div id="app">
+        <div v-if="isEmpty(array)">
+            数组为空
+        </div>
+        <div v-else>
+
+            有数组
+        </div>
+
+    </div>
+
     <script src="res/jquery-3.1.0.min.js"></script>
+    <script src="res/vueJS/vue.min.js"></script>
     <script>
-        function joinzero(num){
-            if(num < 10){
-                return "0"+num;
-            }else{
-                return ""+num;
+        function express_check(company, postid) {
+            var msg;
+            var obj = {
+                "action": "query",
+                "postid": postid,
+                "company": company
             }
+            $.ajax({
+                url: "/express",
+                type: "post",
+                data: obj,
+                success: function (d) {
+                    var data = JSON.parse(d);
+                    // console.log(data.express)
+                    msg = JSON.parse(data.express)
+                    // var express_state;
+                    // console.log(msg)
+
+                    // switch (msg.state) {
+                    //     case '0':
+                    //         express_state = '运输中';
+                    //         break;
+                    //     case '1':
+                    //         express_state = '揽件中';
+                    //         break;
+                    //     case '2':
+                    //         express_state = '疑难';
+                    //         break;
+                    //     case '3':
+                    //         express_state = '已签收';
+                    //         break;
+                    //     case '4':
+                    //         express_state = '退签';
+                    //         break;
+                    //     case '5':
+                    //         express_state = '派件中';
+                    //         break;
+                    //     default:
+                    //         express_state = '没有快递信息';
+
+                    // }
+
+                    // $("#current_progress>b").html(express_state);
+                    // $("#current_progress>span").html(present_status);
+                    //  var html="";
+                    // for(var i in msg.data ){
+                    //    html+="<p>"+
+                    //             "<span>"+msg.data[i].time+"</span>"+
+                    //             "<span>"+msg.data[i].context+"</span>"+
+                    //    "</p>"
+
+                    //     // console.log(msg.data[i])
+                    // }
+                    // $("#express_information").html(html);
+                },
+
+                error: function () {
+                    console.log("请查看网络")
+                }
+            })
+            return msg;
         }
-        var arr = [5,12,10,9,0,3,24,60];
-        for(var i = 0;i < arr.length;i++){
-            arr[i] = joinzero(arr[i]);
+        
+        if(confirm("zzz")){
+            var msg = express_check("", 811855394371);
+            console.log(msg);
         }
-        console.log(arr);
+
+        // new Vue({
+        //     el:"#app",
+        //     data:{
+        //         array:[]
+        //     },
+        //     methods:{
+        //         isEmpty: function(arr){
+        //             var len = arr.length;
+        //             if(len == 0){
+        //                 return true;
+        //             }else{
+        //                 return false;
+        //             }
+        //         }
+        //     }
+
+        // })
     </script>
 </body>
 

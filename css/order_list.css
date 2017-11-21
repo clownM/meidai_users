@@ -5,7 +5,7 @@
 .tabs-head {
     width: 100%;
     height: 50px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
     background-color: #fff;
     border-top: 1px solid rgb(240, 240, 240);
 }
@@ -69,7 +69,7 @@
 
 .order .order-body {
     width: 100%;
-    min-height: 100px;
+    min-height: 25px;
     padding-left: 10px;
     padding-right: 10px;
     /* line-height: 100%; */
@@ -98,17 +98,36 @@
     border: none;
     background-color: rgb(255,79,79);
     color:white;
+    margin-right: 5px;
 }
-.order .order-footer button:first-child{
-    /* margin-right: 10px; */
+.order .order-footer button:last-child{
+    margin-right: 0;
 }
 .failorder {
     width: 100%;
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
     padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #fff;
 }
-
+.price{
+    width: 100%;
+    height:30px;
+    line-height: 30px;
+    text-align: right;
+    border-top: 1px solid rgb(240, 240, 240);
+}
+.tabs-contents{
+    position: relative;
+}
+#loading{
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    position: absolute;
+    background-color: rgb(240, 240, 240);
+}
 /* @media (min-width:992px) {
     .tabs-head ul li {
         width: 12%;
