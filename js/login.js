@@ -848,9 +848,10 @@ $(document).ready(function() {
     //页面跳转
     //-----------------------------
     function goTohtml() {
-        window.location.href = '/index.html';
+        if(IsPC()){
+            window.location.href = '/index.html';
+        }else{
+            window.location.href = "/mymeidai.html";
+        }
     }
-    //-----------------------------
-    //Cookie
-    //-----------------------------
 })

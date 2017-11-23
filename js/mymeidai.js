@@ -31,7 +31,7 @@ $(function(){
             }
         })
         $("#userinfo").click(function(){
-            window.location.href = "/userinfo.html";
+            window.location.href = "/userinfo/userinfo.html";
         })
     }else{
         $("#username").text("未登录");
@@ -40,4 +40,8 @@ $(function(){
             window.location.href = "/login.html";
         })
     }
+    $(".go-back").unbind();
+    $(".go-back").click(function(){
+        window.location.href = "/index.html";
+    });
 });

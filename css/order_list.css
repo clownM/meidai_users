@@ -1,13 +1,11 @@
-@media (max-width:991px) {
-    
-}
-
 .tabs-head {
-    width: 100%;
+    width: 70%;
     height: 50px;
     /* margin-bottom: 10px; */
     background-color: #fff;
     border-top: 1px solid rgb(240, 240, 240);
+    position: fixed;
+    top: 50px;
 }
 
 .tabs-head ul li {
@@ -17,14 +15,11 @@
     text-align: center;
     line-height: 50px;
 }
-#clearBoth{
-    clear: both;
-}
 .tabs-head ul li a {
     display: block;
     width: 100%;
     height: 100%;
-    border-bottom: 2px solid rgb(240, 240, 240);
+    border-bottom: 2px solid #fff;
     color: inherit;
 }
 
@@ -36,7 +31,7 @@
 
 .tabs-body {
     width: 100%;
-    margin-top: 120px;
+    margin-top: 110px;
 }
 
 .tabs-body .tabs-contents {
@@ -127,6 +122,11 @@
     z-index: 999;
     position: absolute;
     background-color: rgb(240, 240, 240);
+}
+.orderuuid-hidden,
+.dealuuid-hidden
+{
+    display: none;
 }
 /* @media (min-width:992px) {
     .tabs-head ul li {

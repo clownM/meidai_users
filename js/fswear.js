@@ -213,6 +213,10 @@ $(document).ready(function() {
 
     if (IsPC()) {
         $('.navbar-pc').load("navbar.html .user_nav", function() {
+            
+            $(".content").css({"width":"70%","margin":"0 auto"});
+            $(".top-fixed").css("display","none");
+
             /****** 设置头像和用户名 ******/
             // console.log(getCookie("uuid"))
             if (getCookie("uuid") != '') {
@@ -304,7 +308,13 @@ $(document).ready(function() {
         })
     }else{
         $('.tabs-mobile').load("/navbar.html .user_tabs", function() {
-            
+            $("head").append("<link>");
+            var link = $("head").children(":last");
+            link.attr({
+                rel:"stylesheet",
+                type:"text/css",
+                href:"/css/app.css"
+            });
         })
     }
 });

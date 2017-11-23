@@ -1,0 +1,41 @@
+#logout {
+    width: 90%;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 5%;
+    border-radius: 5px;
+    background-color: rgb(255, 91, 91);
+    color: #fff;
+}
+.ullist{
+    margin-top: 60px;
+    width: 100%;
+}
+.ullist ul{
+    width: 100%;
+}
+.ullist ul li{
+    float: left;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #fff;
+    border-bottom: 1px solid rgb(240, 240, 240);
+    padding: 0 10px;
+}
+.ullist ul li a{
+    display: block;
+    width: 100%;
+    height: 50px;
+}
+.ullist ul li a span:nth-child(2){
+    font-size: 16px;
+}
+.ullist ul li a span:last-child{
+    float: right;
+}
+.ullist ul li img{
+    width: 20px;
+    height: 20px;
+    margin-top: -4px;       
+}

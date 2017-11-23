@@ -41,11 +41,17 @@
 
 .wuliu {
     width: 100%;
-    height: 80px;
+    min-height: 40px;
     border-bottom: 1px solid #ccc;
 }
 
-
+.wuliu .wuliu-top{
+    display: flex;
+    justify-content: space-between;
+}
+.wuliu p.delivery_context{
+    font-size: 20px;
+}
 /* 
 .wuliu .wuliuinfo {
     height: 60px;
@@ -60,33 +66,8 @@
     width: 100%;
     height: 80px;
     margin-bottom: 10px;
-}
-
-.wuliu,
-.userinfo {
     text-align: center;
-    line-height: 80px;
 }
-
-
-/* 
-.userinfo .username {
-    display: inline-block;
-    height: 30px;
-    line-height: 30px;
-}
-
-.userinfo .userphone {
-    float: right;
-    height: 30px;
-    line-height: 30px;
-}
-
-.userinfo .useraddress {
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
-} */
 
 .shop {
     width: 100%;
@@ -169,4 +150,21 @@ table.jingkuang2 tr:first-child td {
     background-color: #fff;
     font-size: 12px;
     color:#555;
+}
+.price{
+    width: 100%;
+    background-color: #fff;
+    min-height: 40px;
+    line-height: 40px;
+    text-align: right;
+    border-top: 1px solid rgb(240, 240, 240);
+}
+#print{
+    width: 100px;
+    height: 30px;
+    margin-top: 5px;
+    float: right;
+    background-color: rgb(255, 92, 92);
+    color:#fff;
+    border-radius: 8px;
 }

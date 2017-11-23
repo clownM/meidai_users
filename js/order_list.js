@@ -30,6 +30,11 @@ $(function () {
     //将订单的uuid全部放入数组中
     var order_uuid_arr = [];
     var cancelOrder_uuid_arr = [];
+    if(IsPC()){
+        $(".tabs-head").css("width","70%");
+    }else{
+        $(".tabs-head").css("width","100%");
+    }
     var vm = new Vue({
         el: '#content',
         data: {
@@ -44,14 +49,17 @@ $(function () {
             this.get_order_info();
             // this.get_all_orders();
             // DOM经过Vue渲染之后
-            this.$nextTick(() => {
-                $("#loading").css("display","none");
-
+            this.$nextTick(function () {
+                $("#loading").css("display", "none");
+                $("#content").css("display", "");
                 tabsToggle();
                 // 跳转至订单详情
                 $(".to_order_details").click(function () {
-                    var index = $(".to_order_details").index(this);
-                    setCookie("orderuuid", order_uuid_arr[index], 1);
+                    var orderuuid = $(this).siblings(".orderuuid-hidden").text();
+                    var dealuuid = $(this).siblings(".dealuuid-hidden").text();
+                    console.log("orderuuid:" + orderuuid + "\n dealuuid:" + dealuuid);
+                    setCookie("orderuuid", orderuuid, 1);
+                    setCookie("dealuuid", dealuuid, 1);
                     window.location.href = "order_details.html";
                 });
 
@@ -221,19 +229,22 @@ $(function () {
                                                                         if (dt.paymentstatus == "topay") {
                                                                             topay_array.push({
                                                                                 "orderno": orderno,
+                                                                                "orderuuid": orderUuid,
                                                                                 "uuid": dealuuid,
                                                                                 "station": station,
-                                                                                "status": get_status(dt.status),
+                                                                                "status": "待支付",
                                                                                 "price": dt.price,
                                                                                 "appointmentdate": appointmentdate,
                                                                                 "scandate": scandate,
                                                                                 "orderCreatedate": orderCreateDate,
-                                                                                "dealCreatedate": dealCreatedate
+                                                                                "dealCreatedate": dealCreatedate,
+                                                                                "discount": dt.discount
                                                                             });
                                                                             // 生产中
                                                                         } else if (dt.paymentstatus == "paid" && dt.status == "printing") {
                                                                             printing_array.push({
                                                                                 "orderno": orderno,
+                                                                                "orderuuid": orderUuid,
                                                                                 "uuid": dealuuid,
                                                                                 "station": station,
                                                                                 "status": get_status(dt.status),
@@ -241,12 +252,14 @@ $(function () {
                                                                                 "appointmentdate": appointmentdate,
                                                                                 "scandate": scandate,
                                                                                 "orderCreatedate": orderCreateDate,
-                                                                                "dealCreatedate": dealCreatedate
+                                                                                "dealCreatedate": dealCreatedate,
+                                                                                "discount": dt.discount
                                                                             });
                                                                             //运输中（待收货）
                                                                         } else if (dt.paymentstatus == "paid" && dt.status == "delivering") {
                                                                             delivering_array.push({
                                                                                 "orderno": orderno,
+                                                                                "orderuuid": orderUuid,
                                                                                 "uuid": dealuuid,
                                                                                 "station": station,
                                                                                 "status": get_status(dt.status),
@@ -254,12 +267,14 @@ $(function () {
                                                                                 "appointmentdate": appointmentdate,
                                                                                 "scandate": scandate,
                                                                                 "orderCreatedate": orderCreateDate,
-                                                                                "dealCreatedate": dealCreatedate
+                                                                                "dealCreatedate": dealCreatedate,
+                                                                                "discount": dt.discount
                                                                             });
                                                                             // 已完成
                                                                         } else if (dt.paymentstatus == "paid" && dt.status == "done") {
                                                                             done_array.push({
                                                                                 "orderno": orderno,
+                                                                                "orderuuid": orderUuid,
                                                                                 "uuid": dealuuid,
                                                                                 "station": station,
                                                                                 "status": get_status(dt.status),
@@ -267,7 +282,8 @@ $(function () {
                                                                                 "appointmentdate": appointmentdate,
                                                                                 "scandate": scandate,
                                                                                 "orderCreatedate": orderCreateDate,
-                                                                                "dealCreatedate": dealCreatedate
+                                                                                "dealCreatedate": dealCreatedate,
+                                                                                "discount": dt.discount
                                                                             });
                                                                         }
                                                                     } else {
@@ -281,18 +297,7 @@ $(function () {
                                                         }
                                                     }
                                                 }
-                                                ordersArray.push({
-                                                    "orderno": orderno,
-                                                    "createdate": orderCreateDate,
-                                                    "station": station,
-                                                    "appointmentdate": appointmentdate,
-                                                    "scandate": scandate,
-                                                    "status": status,
-                                                    "deals": deals
-                                                });
                                                 order_uuid_arr.push(orderUuid);
-
-
                                             }
                                         },
                                         error: function () {

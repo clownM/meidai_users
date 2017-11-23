@@ -1,4 +1,5 @@
 /* 样式统一 */
+
 * {
     margin: 0;
     padding: 0;
@@ -11,9 +12,11 @@ body {
     background-color: rgb(240, 240, 240);
     color: #515151;
 }
-a{
+
+a {
     color: inherit;
 }
+
 a:link,
 a:visited,
 a:hover,
@@ -25,11 +28,10 @@ ul li {
     list-style: none;
 }
 
-button{
+button {
     border: none;
     outline: none;
 }
-
 
 .btn-lg {
     width: 300px;
@@ -133,14 +135,21 @@ button{
     outline: none;
 }
 
+
 /* pc端顶部导航 */
+
+
 /*用户头像*/
+
 .nav-user-portrait {
     width: 50px;
     height: 50px;
     border-radius: 50%;
 }
+
+
 /*阴影 */
+
 .navbar-default {
     background: #fff;
     border-top: 5px solid rgba(29, 29, 29, 0.8);
@@ -197,53 +206,73 @@ button{
     cursor: pointer;
 }
 
+
 /* 移动APP页面顶部返回 */
-.top-fixed{
+
+.top-fixed {
     width: 100%;
     position: fixed;
     top: 0;
     background-color: #fff;
     border-bottom: 1px solid rgb(240, 240, 240);
+    z-index: 9999;
 }
-div.go-back{
+
+div.go-back {
     width: 50%;
-    height: 60px;
-    line-height: 60px;
+    height: 50px;
+    line-height: 50px;
     display: flex;
     justify-content: flex-start;
     font-size: 18px;
 }
-.go-back .icon-back{
-    width: 20px ;
-    height: 20px ;
-    margin-top: 20px;
+
+.go-back .icon-back {
+    width: 20px;
+    height: 20px;
+    margin-top: 15px;
     margin-left: 10px;
     margin-right: 10px;
-    /* background-color: yellowgreen; */ 
+    /* background-color: yellowgreen; */
     background-image: url("/images/icons/向左.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
-.content{
+
+.content {
     background-color: rgb(240, 240, 240);
 }
-/* PC */
-@media (min-width:992px) {
-    .content {
-        width: 70%;
-        margin: 60px auto;
-        height: 100%;
-    }
-    div.go-back{
-        display: none;
-    }
+
+/* 移动端底部tabs */
+.user_tabs {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    border-top: 1px solid #ccc;
+    background-color: #fff;
 }
 
+.user_tabs_wrap {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+}
 
+.user_tabs_tab {
+    text-align: center;
+}
+
+.tab_icon {
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+}
 /* 平板 */
 @media (min-width: 768px) and (max-width:991px) {
-    .body{
+    .body {
         background-color: rgb(240, 240, 240);
     }
     .content {
@@ -252,64 +281,30 @@ div.go-back{
         height: 100%;
     }
     /* 移动端底部tabs */
-    .user_tabs{
-        position: fixed;
-        bottom: 0;
-        width: 100%;
+    .user_tabs {
         height: 80px;
-        border-top: 1px solid #ccc;
-        background-color: #fff;
     }
-    .user_tabs_wrap{
-        width: 100%;
-        height: 80px;
-        display: flex;
-        justify-content: space-around;
-    }
-    .user_tabs_tab{
-        text-align:center;
-
-    }
-    .tab_icon{
+    .tab_icon {
         width: 40px;
         height: 40px;
         margin-top: 10px;
     }
 }
-
-/* 手机 */
-@media (max-width:767px) {
-    .body{
-        background-color: rgb(240, 240, 240);
-        /* font-size: 30px; */
-    }
-    .content {
-        width: 100%;
+/* @media (min-width: 992px){
+    .content{
+        width: 70%;
         margin: 0 auto;
-        height: 100%;
     }
-    /* 移动端底部tabs */
-    .user_tabs{
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        height: 60px;
-        border-top: 1px solid #ccc;
-        background-color: #fff;
+    .top-fixed{
+        display: none
     }
-    .user_tabs_wrap{
-        width: 100%;
-        height: 60px;
-        display: flex;
-        justify-content: space-around;
-    }
-    .user_tabs_tab{
-        text-align:center;
+} */
 
-    }
-    .tab_icon{
-        width: 20px;
-        height: 20px;
-        margin-top: 10px;
-    }
+/* 清除浮动 */
+#clearBoth{
+    clear: both;
 }
+.mt50px{
+    margin-top: 50px;
+}
+

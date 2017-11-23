@@ -10,104 +10,51 @@
 
 <body>
     <div id="app">
-        <div v-if="isEmpty(array)">
-            数组为空
-        </div>
-        <div v-else>
-
-            有数组
-        </div>
-
+        <p>{{UA}}</p>
     </div>
-
+    <button id="print">打印</button>
     <script src="res/jquery-3.1.0.min.js"></script>
     <script src="res/vueJS/vue.min.js"></script>
     <script>
-        function express_check(company, postid) {
-            var msg;
-            var obj = {
-                "action": "query",
-                "postid": postid,
-                "company": company
-            }
-            $.ajax({
-                url: "/express",
-                type: "post",
-                data: obj,
-                success: function (d) {
-                    var data = JSON.parse(d);
-                    // console.log(data.express)
-                    msg = JSON.parse(data.express)
-                    // var express_state;
-                    // console.log(msg)
-
-                    // switch (msg.state) {
-                    //     case '0':
-                    //         express_state = '运输中';
-                    //         break;
-                    //     case '1':
-                    //         express_state = '揽件中';
-                    //         break;
-                    //     case '2':
-                    //         express_state = '疑难';
-                    //         break;
-                    //     case '3':
-                    //         express_state = '已签收';
-                    //         break;
-                    //     case '4':
-                    //         express_state = '退签';
-                    //         break;
-                    //     case '5':
-                    //         express_state = '派件中';
-                    //         break;
-                    //     default:
-                    //         express_state = '没有快递信息';
-
-                    // }
-
-                    // $("#current_progress>b").html(express_state);
-                    // $("#current_progress>span").html(present_status);
-                    //  var html="";
-                    // for(var i in msg.data ){
-                    //    html+="<p>"+
-                    //             "<span>"+msg.data[i].time+"</span>"+
-                    //             "<span>"+msg.data[i].context+"</span>"+
-                    //    "</p>"
-
-                    //     // console.log(msg.data[i])
-                    // }
-                    // $("#express_information").html(html);
-                },
-
-                error: function () {
-                    console.log("请查看网络")
-                }
-            })
-            return msg;
-        }
-        
-        if(confirm("zzz")){
-            var msg = express_check("", 811855394371);
-            console.log(msg);
-        }
-
         // new Vue({
         //     el:"#app",
         //     data:{
-        //         array:[]
-        //     },
-        //     methods:{
-        //         isEmpty: function(arr){
-        //             var len = arr.length;
-        //             if(len == 0){
-        //                 return true;
-        //             }else{
-        //                 return false;
-        //             }
-        //         }
+        //         "UA": navigator.userAgent,
         //     }
-
         // })
+
+
+
+        // function loop(x) {
+        //     for (var i = 0; i < 3; i++) {
+        //         if (x = 0) {
+        //             return "i=" + i + ";x=" + x;
+        //         }
+        //         return "i=" + i + ";x=" + loop();
+        //     }
+        // }
+        // loop(3);
+
+        var fs = (function test(num) {
+            for (var i = 0; i < 2; i++) {
+                if (num <= 0) {
+                    console.log("i=" + i + "; over!");
+                    // return 1;
+                } else {
+                    console.log("i=" + i + ";num=" + num);
+                    test(num - 1);
+                }
+                return num;
+            }
+            //下面这两行代码完全不会影响运行，不信？那你可以试试
+            //var f = test;
+            // test = null;
+        });
+        console.log(fs(4));
+        $("#print").click(function(){
+            window.print(); 
+        }) 
+        // fs(4);
     </script>
 </body>
 

@@ -27,48 +27,50 @@
     <!-- PC端顶部导航 -->
     <div class='navbar-pc'></div>
     <!-- 页面展示内容 -->
-    <div class="content" id="content">
+    <div id="loading">loading……</div>
+    <div class="content" id="content" style="display:none">
         <div class="top-fixed">
             <div class="go-back">
                 <span class="icon-back"></span>
                 <p>我的订单</p>
             </div>
-            <div class="tabs-head">
-                <ul class="tabs-ul">
-                    <li>
-                        <a class="active" href="#">全部</a>
-                    </li>
-                    <li>
-                        <a href="#">待扫描</a>
-                    </li>
-                    <li>
-                        <a href="#">待支付</a>
-                    </li>
-                    <li>
-                        <a href="#">生产中</a>
-                    </li>
-                    <li>
-                        <a href="#">待收货</a>
-                    </li>
-                    <div id="clearBoth"></div>
-                </ul>
-            </div>
         </div>
-
+        <div class="tabs-head">
+            <ul class="tabs-ul">
+                <li>
+                    <a class="active" href="javascript:0">全部</a>
+                </li>
+                <li>
+                    <a href="javascript:0">待扫描</a>
+                </li>
+                <li>
+                    <a href="javascript:0">待支付</a>
+                </li>
+                <li>
+                    <a href="javascript:0">生产中</a>
+                </li>
+                <li>
+                    <a href="javascript:0">待收货</a>
+                </li>
+                <div id="clearBoth"></div>
+            </ul>
+        </div>
         <div class="tabs-body" id="tabs-body">
             <!-- 全部订单 -->
             <div class="tabs-contents active">
-                <div id="loading">loading……</div>
-                <div class="failorder" v-if="isEmpty(topay_array)">
+                <div class="failorder" v-if="isEmpty(toscan_array) && isEmpty(topay_array) && isEmpty(printing_array) && isEmpty(delivering_array) && isEmpty(done_array)">
                     没有相关订单
                 </div>
-                <div v-else>    
-                    <div class="order" v-for="(order,index) in ordersArray">
+                <div v-else>
+                    <!-- 全部/待扫描 -->
+                    <div class="order" v-for="(order,index) in toscan_array">
                         <div class="order-header">
-                            <div class="orderno" v-text="order.orderno"></div>
                             <div class="status" v-text="order.status"></div>
                         </div>
                         <div class="order-body">
+                            <div class="orderno">订单编号：
+                                <span v-text="order.orderno"></span>
+                            </div>
                             <div class="createdate">订单创建时间:
                                 <span v-text="order.createdate"></span>
                             </div>
@@ -78,13 +80,144 @@
                             <div class="appointmentdate">预约扫描时间：
                                 <span v-text="order.appointmentdate"></span>
                             </div>
-                            <div class="scandate">实际扫描时间：
-                                <span v-text="order.scandate"></span>
-                            </div>
                         </div>
                         <div class="order-footer">
-                            <button>取消预约</button>
-                            <button>查看物流</button>
+                            <button class="cancelOrder">取消预约</button>
+                        </div>
+                    </div>
+                    <!--  全部/待支付-->
+                    <div class="order" v-for="(deal,index) in topay_array">
+                        <div class="order-header">
+                            <div class="dealuuid" v-text="deal.uuid"></div>
+                            <div class="status" v-text="deal.status"></div>
+                        </div>
+                        <div class="order-body">
+                            <div class="orderno">订单编号：
+                                <span v-text="deal.orderno"></span>
+                            </div>
+                            <div class="createdate">order创建时间:
+                                <span v-text="deal.orderCreatedate"></span>
+                            </div>
+                            <div class="station">预约扫描地址：
+                                <span v-text="deal.station"></span>
+                            </div>
+                            <div class="appointmentdate">预约扫描时间：
+                                <span v-text="deal.appointmentdate"></span>
+                            </div>
+                            <div class="scandate">实际扫描时间：
+                                <span v-text="deal.scandate"></span>
+                            </div>
+                            <div class="dealCreatedate">deal创建时间：
+                                <span v-text="deal.dealCreatedate"></span>
+                            </div>
+                            <div class="price" v-text="'合计： ￥ '+deal.price"></div>
+                        </div>
+                        <div class="order-footer">
+                            <span class="orderuuid-hidden">{{ deal.orderuuid }}</span>
+                            <span class="dealuuid-hidden">{{ deal.uuid }}</span>
+                            <button class="">付款</button>
+                            <button class="to_order_details">订单详情</button>
+                        </div>
+                    </div>
+                    <!-- 全部/生产中 -->
+                    <div class="order" v-for="(deal,index) in printing_array">
+                        <div class="order-header">
+                            <div class="dealuuid" v-text="deal.uuid"></div>
+                            <div class="status" v-text="deal.status"></div>
+                        </div>
+                        <div class="order-body">
+                            <div class="orderno">订单编号：
+                                <span v-text="deal.orderno"></span>
+                            </div>
+                            <div class="createdate">order创建时间:
+                                <span v-text="deal.orderCreatedate"></span>
+                            </div>
+                            <div class="station">预约扫描地址：
+                                <span v-text="deal.station"></span>
+                            </div>
+                            <div class="appointmentdate">预约扫描时间：
+                                <span v-text="deal.appointmentdate"></span>
+                            </div>
+                            <div class="scandate">实际扫描时间：
+                                <span v-text="deal.scandate"></span>
+                            </div>
+                            <div class="dealCreatedate">deal创建时间：
+                                <span v-text="deal.dealCreatedate"></span>
+                            </div>
+                            <div class="price" v-text="'合计： ￥ '+deal.price"></div>
+                        </div>
+                        <div class="order-footer">
+                            <span class="orderuuid-hidden">{{ deal.orderuuid }}</span>
+                            <span class="dealuuid-hidden">{{ deal.uuid }}</span>
+                            <button class="">催单</button>
+                            <button class="to_order_details">订单详情</button>
+                        </div>
+                    </div>
+                    <!-- 全部/待收货 -->
+                    <div class="order" v-for="(deal,index) in delivering_array">
+                        <div class="order-header">
+                            <div class="dealuuid" v-text="deal.uuid"></div>
+                            <div class="status" v-text="deal.status"></div>
+                        </div>
+                        <div class="order-body">
+                            <div class="orderno">订单编号：
+                                <span v-text="deal.orderno"></span>
+                            </div>
+                            <div class="createdate">order创建时间:
+                                <span v-text="deal.orderCreatedate"></span>
+                            </div>
+                            <div class="station">预约扫描地址：
+                                <span v-text="deal.station"></span>
+                            </div>
+                            <div class="appointmentdate">预约扫描时间：
+                                <span v-text="deal.appointmentdate"></span>
+                            </div>
+                            <div class="scandate">实际扫描时间：
+                                <span v-text="deal.scandate"></span>
+                            </div>
+                            <div class="dealCreatedate">deal创建时间：
+                                <span v-text="deal.dealCreatedate"></span>
+                            </div>
+                            <div class="price" v-text="'合计： ￥ '+deal.price"></div>
+                        </div>
+                        <div class="order-footer">
+                            <span class="orderuuid-hidden">{{ deal.orderuuid }}</span>
+                            <span class="dealuuid-hidden">{{ deal.uuid }}</span>
+                            <button class="">查看物流</button>
+                            <button class="">确认收货</button>
+                            <button class="to_order_details">订单详情</button>
+                        </div>
+                    </div>
+                    <!-- 全部/已收货 -->
+                    <div class="order" v-for="(deal,index) in done_array">
+                        <div class="order-header">
+                            <div class="dealuuid" v-text="deal.uuid"></div>
+                            <div class="status" v-text="deal.status"></div>
+                        </div>
+                        <div class="order-body">
+                            <div class="orderno">订单编号：
+                                <span v-text="deal.orderno"></span>
+                            </div>
+                            <div class="createdate">order创建时间:
+                                <span v-text="deal.orderCreatedate"></span>
+                            </div>
+                            <div class="station">预约扫描地址：
+                                <span v-text="deal.station"></span>
+                            </div>
+                            <div class="appointmentdate">预约扫描时间：
+                                <span v-text="deal.appointmentdate"></span>
+                            </div>
+                            <div class="scandate">实际扫描时间：
+                                <span v-text="deal.scandate"></span>
+                            </div>
+                            <div class="dealCreatedate">deal创建时间：
+                                <span v-text="deal.dealCreatedate"></span>
+                            </div>
+                            <div class="price" v-text="'合计： ￥ '+deal.price"></div>
+                        </div>
+                        <div class="order-footer">
+                            <span class="orderuuid-hidden">{{ deal.orderuuid }}</span>
+                            <span class="dealuuid-hidden">{{ deal.uuid }}</span>
                             <button class="to_order_details">订单详情</button>
                         </div>
                     </div>
@@ -153,8 +286,10 @@
                             <div class="price" v-text="'合计： ￥ '+deal.price"></div>
                         </div>
                         <div class="order-footer">
+                            <span class="orderuuid-hidden">{{ deal.orderuuid }}</span>
+                            <span class="dealuuid-hidden">{{ deal.uuid }}</span>
                             <button class="">付款</button>
-                            <button class="">查看详情</button>
+                            <button class="to_order_details">订单详情</button>
                         </div>
                     </div>
                 </div>
@@ -192,8 +327,10 @@
                             <div class="price" v-text="'合计： ￥ '+deal.price"></div>
                         </div>
                         <div class="order-footer">
+                            <span class="orderuuid-hidden">{{ deal.orderuuid }}</span>
+                            <span class="dealuuid-hidden">{{ deal.uuid }}</span>
                             <button class="">催单</button>
-                            <button class="">查看详情</button>
+                            <button class="to_order_details">订单详情</button>
                         </div>
                     </div>
                 </div>
@@ -231,9 +368,11 @@
                             <div class="price" v-text="'合计： ￥ '+deal.price"></div>
                         </div>
                         <div class="order-footer">
+                            <span class="orderuuid-hidden">{{ deal.orderuuid }}</span>
+                            <span class="dealuuid-hidden">{{ deal.uuid }}</span>
                             <button class="">查看物流</button>
                             <button class="">确认收货</button>
-                            <button class="">订单详情</button>
+                            <button class="to_order_details">订单详情</button>
                         </div>
                     </div>
                 </div>

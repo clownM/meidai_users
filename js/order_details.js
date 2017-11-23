@@ -260,14 +260,14 @@ function alreadyscan(param1, param2) {
         var tmp_collecteddata = isOwnEmpty(glass_collecteddata_data, 'sdf');
         var _lastOrdernumber = param2;
         var create_ordertime = create_time(param1.createdate);
-        var _orderstatus = get_status(param1.status);
+        // var _orderstatus = get_status(param1.status);
         var _userordertext = {};
         /**
          * 订单编号 
          **/
         _userordertext.ordertimetxt = create_ordertime._year + "年" + create_ordertime._month + "月" + create_ordertime._day + "日 " + create_ordertime._hour + ":" + create_ordertime._minute + ":" + create_ordertime._second;
         _userordertext.ordernumbertxt = "" + create_ordertime._year + create_ordertime._month + create_ordertime._day + _lastOrdernumber;
-        _userordertext.orderstatus = _orderstatus;
+        // _userordertext.orderstatus = _orderstatus;
         /**
          * 验光参数 
          **/
@@ -341,6 +341,16 @@ function alreadyscan(param1, param2) {
     return orderobj;
 }
 
+// 打印局部内容
+function printDiv() {
+    var oldHtml = $("body").html(),
+        printHtml = $("#printPage").html();
+    $("body").html("");
+    $("body").append("<div class='orderinfo'></div>");
+    $(".orderinfo").html(printHtml);
+    window.print();
+    $("body").html(oldHtml);
+}
 $(function () {
     new Vue({
         el: "#content",
@@ -370,28 +380,41 @@ $(function () {
             legProfile: "", //镜框图片
             legColor: "", //镜腿颜色
 
-            company: "",    //快递公司
-            postid: ""      //快递单号
+            price: "", //价格
+            delivery_company: "", //快递公司
+            delivery_postid: "", //快递单号
+            delivery_context: "", //最近一条快递内容
+            delivery_date: "", //最近一条快递时间
+            orderuuid: "",
+            dealuuid: "",
+            dealcreatedate: ""
 
         },
         mounted: function () {
             this.get_order_details();
-            this.$nextTick(() => {
+            this.$nextTick(function () {
                 //移动端顶部返回
                 $(".go-back").on("click", function () {
-                    // window.location.href="/order_list.html";
                     history.back();
                 });
+
+                $("#print").click(function () {
+                    printDiv();
+                });
             })
+
         },
         methods: {
             get_order_details: function () {
                 var resultobj;
-                if (getCookie("uuid") != "" && getCookie("orderuuid") != "") {
-                    var orderuuid = getCookie("orderuuid");
+                var deliveryobj;
+                var orderuuid = getCookie("orderuuid");
+                var dealuuid = getCookie("dealuuid");
+                if (getCookie("uuid") != "" && orderuuid != "" && dealuuid != "") {
                     // var orderuuid = "d92ff0da7a139028f372c2cab5b18a48";
                     console.log("useruuid:" + getCookie("uuid"));
                     console.log("orderuuid:" + orderuuid);
+                    console.log("dealuuid:" + dealuuid);
                     var orderuuid_hash = hashCode(orderuuid);
                     var order_data = {
                         "action": "query",
@@ -416,10 +439,12 @@ $(function () {
                         dataType: "json",
                         async: false,
                         success: function (orderData) {
-                            var station = orderData.station;
                             resultobj = alreadyscan(orderData, orderuuid_hash);
-                            resultobj.station = station;
 
+                            var station = orderData.station;
+                            resultobj.station = station;
+                            resultobj.orderuuid = orderuuid;
+                            resultobj.dealuuid = dealuuid;
                             var dealobj = {
                                 "action": "query",
                                 "uuid": dealuuid,
@@ -445,25 +470,90 @@ $(function () {
                                 async: false,
                                 url: "/deal",
                                 success: function (dt) {
+                                    var paymentstatus = dt.paymentstatus;
+                                    var dealcreatedate = create_time(dt.createdate);
+                                    resultobj.dealcreatedate = dealcreatedate._year + "年" + dealcreatedate._month + "月" + dealcreatedate._day + "日 " + dealcreatedate._hour + ":" + dealcreatedate._minute + ":" + dealcreatedate._second;
+                                    var status = dt.status;
+                                    if (paymentstatus == "topay") {
+                                        resultobj.orderstatus = "待支付"
+                                    } else {
+                                        resultobj.orderstatus = get_status(status)
+                                    }
                                     var price = dt.price;
                                     resultobj.price = price;
 
                                     var delivery = dt.delivery;
+                                    var delivery_company;
+                                    var delivery_postid;
+
                                     if (delivery == "") {
                                         //没有快递信息
+                                        $(".wuliu").text("暂无快递信息");
+                                        $(".wuliu").css({
+                                            "line-height": "40px",
+                                            "text-align": "center"
+                                        });
                                     } else {
                                         delivery = JSON.parse(delivery);
+                                        console.log(delivery);
                                         if (delivery.postprocessing_delivery == undefined) {
-                                            var courier_company = delivery.production_delivery.courier_company;
-                                            var courier_number = delivery.production_delivery.courier_number;
-                                            resultobj.company = courier_company;
-                                            resultobj.postid = courier_number;
+                                            delivery_company = delivery.production_delivery.courier_company;
+                                            delivery_postid = delivery.production_delivery.courier_number;
+                                            resultobj.delivery_company = delivery_company;
+                                            resultobj.delivery_postid = delivery_postid;
                                         } else {
-                                            var courier_company = delivery.postprocessing_delivery.courier_company;
-                                            var courier_number = delivery.postprocessing_delivery.courier_number;
-                                            resultobj.company = courier_company;
-                                            resultobj.postid = courier_number;
+                                            delivery_company = delivery.postprocessing_delivery.courier_company;
+                                            delivery_postid = delivery.postprocessing_delivery.courier_number;
+                                            resultobj.delivery_company = delivery_company;
+                                            resultobj.delivery_postid = delivery_postid;
                                         }
+                                        /* 快递查询 */
+                                        var deliveryobj = {
+                                            "action": "query",
+                                            "postid": delivery_postid,
+                                            "company": delivery_company
+                                        }
+                                        $.ajax({
+                                            url: "/express",
+                                            type: "post",
+                                            data: deliveryobj,
+                                            dataType: "json",
+                                            async: false,
+                                            success: function (data) {
+                                                var express = JSON.parse(data.express);
+                                                console.log(express);
+                                                var delivery_state;
+                                                switch (express.state) {
+                                                    case '0':
+                                                        delivery_state = '运输中';
+                                                        break;
+                                                    case '1':
+                                                        delivery_state = '揽件中';
+                                                        break;
+                                                    case '2':
+                                                        delivery_state = '疑难';
+                                                        break;
+                                                    case '3':
+                                                        delivery_state = '已签收';
+                                                        break;
+                                                    case '4':
+                                                        delivery_state = '退签';
+                                                        break;
+                                                    case '5':
+                                                        delivery_state = '派件中';
+                                                        break;
+                                                    default:
+                                                        delivery_state = '没有快递信息';
+                                                }
+                                                var expressdata = express.data;
+                                                console.log(expressdata);
+                                                resultobj.date = express.data[0].time;
+                                                resultobj.context = express.data[0].context;
+                                            },
+                                            error: function () {
+                                                console.log("请查看网络");
+                                            }
+                                        })
                                     }
                                 },
                                 error: function (er) {
@@ -502,59 +592,19 @@ $(function () {
                     this.legProfile = "/images/tui/" + resultobj.legProfile + ".png";
                     this.legColor = resultobj.legColor;
 
-                    this.company = resultobj,company;
-                    this.postid = resultobj.postid;
+                    this.price = resultobj.price;
+
+                    this.delivery_date = resultobj.date;
+                    this.delivery_context = resultobj.context;
+                    this.delivery_company = resultobj.delivery_company;
+                    this.delivery_postid = resultobj.delivery_postid;
+
+                    this.orderuuid = resultobj.orderuuid;
+                    this.dealuuid = resultobj.dealuuid;
+                    this.dealcreatedate = resultobj.dealcreatedate;
                 } else {
                     window.location.href = "";
                 }
-            },
-            // 快递查询
-            express_check: function (company, postid) {
-                var expressobj;
-                var obj = {
-                    "action": "query",
-                    "postid": postid,
-                    "company": company
-                }
-                $.ajax({
-                    url: "/express",
-                    type: "post",
-                    data: obj,
-                    success: function (data) {
-                        var data = JSON.parse(data)
-                        var msg = JSON.parse(data.express)
-                        var express_state;
-                        switch (msg.state) {
-                            case '0':
-                                express_state = '运输中';
-                                break;
-                            case '1':
-                                express_state = '揽件中';
-                                break;
-                            case '2':
-                                express_state = '疑难';
-                                break;
-                            case '3':
-                                express_state = '已签收';
-                                break;
-                            case '4':
-                                express_state = '退签';
-                                break;
-                            case '5':
-                                express_state = '派件中';
-                                break;
-                            default:
-                                express_state = '没有快递信息';
-                        }
-                        var length = msg.data.length;
-                        expressobj.date = msg.data[length-1].time;
-                        express.context = msg.data[length-1].context;
-                    },
-                    error: function () {
-                        console.log("请查看网络");
-                    }
-                })
-                return expressobj;
             }
         }
     });
