@@ -64,10 +64,16 @@
     <script src="/js/fswear.js"></script>
     <script>
         $(function () {
-            $("#logout").click(function () {
+            if (getCookie("uuid") != "") {
+                $("#logout").click(function () {
+                    delCookie("uuid");
+                    setCookie("isgoto", "false");
+                    setCookie("checkbox", "false");
+                    window.location.href = "/login.html";
+                })
+            }else{
                 window.location.href = "/login.html";
-                delCookie("uuid");
-            })
+            }
         })
     </script>
 </body>

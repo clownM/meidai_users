@@ -38,7 +38,11 @@ $(function(){
         $("#phone").text("点击前往登录！");
         $("#userinfo").click(function(){
             window.location.href = "/login.html";
-        })
+        });
+
+        $("#toorderlist").click(function(){
+            $(this).attr("href","/login.html");
+        });
     }
     $(".go-back").unbind();
     $(".go-back").click(function(){

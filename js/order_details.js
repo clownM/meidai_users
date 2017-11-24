@@ -381,6 +381,8 @@ $(function () {
             legColor: "", //镜腿颜色
 
             price: "", //价格
+
+            delivery_state: "",
             delivery_company: "", //快递公司
             delivery_postid: "", //快递单号
             delivery_context: "", //最近一条快递内容
@@ -391,6 +393,9 @@ $(function () {
 
         },
         mounted: function () {
+            if(!(IsPC())){
+                $("#print").css("display","none");
+            }
             this.get_order_details();
             this.$nextTick(function () {
                 //移动端顶部返回
@@ -499,14 +504,12 @@ $(function () {
                                         if (delivery.postprocessing_delivery == undefined) {
                                             delivery_company = delivery.production_delivery.courier_company;
                                             delivery_postid = delivery.production_delivery.courier_number;
-                                            resultobj.delivery_company = delivery_company;
-                                            resultobj.delivery_postid = delivery_postid;
                                         } else {
                                             delivery_company = delivery.postprocessing_delivery.courier_company;
                                             delivery_postid = delivery.postprocessing_delivery.courier_number;
-                                            resultobj.delivery_company = delivery_company;
-                                            resultobj.delivery_postid = delivery_postid;
                                         }
+                                        resultobj.delivery_company = delivery_company;
+                                        resultobj.delivery_postid = delivery_postid;
                                         /* 快递查询 */
                                         var deliveryobj = {
                                             "action": "query",
@@ -547,6 +550,7 @@ $(function () {
                                                 }
                                                 var expressdata = express.data;
                                                 console.log(expressdata);
+                                                resultobj.state = delivery_state;
                                                 resultobj.date = express.data[0].time;
                                                 resultobj.context = express.data[0].context;
                                             },
@@ -594,6 +598,7 @@ $(function () {
 
                     this.price = resultobj.price;
 
+                    this.delivery_state = resultobj.state;
                     this.delivery_date = resultobj.date;
                     this.delivery_context = resultobj.context;
                     this.delivery_company = resultobj.delivery_company;

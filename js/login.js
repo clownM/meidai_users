@@ -1,13 +1,13 @@
-$(document).ready(function() {
+$(document).ready(function () {
     "use strict"
     if (getCookie("isgoto") == "true") {
-        checklogin(function(re) {
+        checklogin(function (re) {
                 var re_parsed = JSON.parse(re);
                 if (re_parsed.result == "true") {
                     window.location.href = "personaldata.html";
                 }
             },
-            function() {}
+            function () {}
         );
     }
 
@@ -59,25 +59,25 @@ $(document).ready(function() {
     var $userName = "";
     var $user = $(".user");
     var $username = $(".select_userName", $user);
-    $li.each(function() {
-            $(this).on('click', function() {
+    $li.each(function () {
+        $(this).on('click', function () {
 
-                $li.each(function() {
-                    $(this).removeClass("select_active");
-                });
-                $panduan.each(function() {
-                    $(this).val($emailPhoneValue);
-                })
-                $form.each(function() {
-                    $(this).removeClass('active_selected');
-                })
-                $index = $(this).index();
-                $(this).addClass("select_active");
-                $form.eq($index).addClass('active_selected');
+            $li.each(function () {
+                $(this).removeClass("select_active");
+            });
+            $panduan.each(function () {
+                $(this).val($emailPhoneValue);
             })
+            $form.each(function () {
+                $(this).removeClass('active_selected');
+            })
+            $index = $(this).index();
+            $(this).addClass("select_active");
+            $form.eq($index).addClass('active_selected');
         })
-        //登录页面电话输入框
-    $emailPhone.on("blur", function() {
+    })
+    //登录页面电话输入框
+    $emailPhone.on("blur", function () {
         login_input_email_or_phone_infor(false, "");
         login_fsw_success_infor(false, "");
         $(this)[0].placeholder = "请输入手机号";
@@ -96,7 +96,7 @@ $(document).ready(function() {
             }
         }
 
-    }).on("focus", function() {
+    }).on("focus", function () {
         $(this)[0].placeholder = "";
         login_fsw_querr_infor(false, "");
         login_input_email_or_phone_infor(false, "");
@@ -104,7 +104,7 @@ $(document).ready(function() {
 
     });
     //登录页面密码输入框
-    $("#login_form .login_password").on("blur", function() {
+    $("#login_form .login_password").on("blur", function () {
         login_input_password_infor(false, "");
         $(this)[0].placeholder = "请输入密码";
         if ($(this).val() !== "") {
@@ -113,49 +113,49 @@ $(document).ready(function() {
         if (this.placeholder == "" && $(this).val().length < 8 && $(this).val() !== '*') {
             login_input_password_infor(true, "输入密码必须大于等于8位字符");
         }
-    }).on("focus", function() {
+    }).on("focus", function () {
         $(this)[0].placeholder = "";
         login_fsw_querr_infor(false, "")
         login_input_password_infor(false, "");
         login_fsw_success_infor(false, "");
     });
     //多用户登录页面用户输入框
-    $("#login_form .login_form_userName input[type='text']").on("blur", function() {
+    $("#login_form .login_form_userName input[type='text']").on("blur", function () {
         login_form_userName_error_infor(false, "");
         $(this)[0].placeholder = "请输入用户名";
-    }).on("focus", function() {
+    }).on("focus", function () {
         $(this)[0].placeholder = "";
         login_fsw_querr_infor(false, "")
         login_form_userName_error_infor(false, "");
         login_fsw_success_infor(false, "");
     });
     //注册页面电话输入框
-    $emailByphone.on("blur", function() {
-            registration_input_email_or_phone_infor(false, "");
-            $(this)[0].placeholder = "请输入手机号";
-            $emailPhoneValue = $(this).val();
+    $emailByphone.on("blur", function () {
+        registration_input_email_or_phone_infor(false, "");
+        $(this)[0].placeholder = "请输入手机号";
+        $emailPhoneValue = $(this).val();
 
-            // if($(this).val()!==""&&/1[358]\d{9}$/.test($(this).val())){
-            if ($(this).val() !== "" && /1[34578]\d{9}$/.test($(this).val())) {
+        // if($(this).val()!==""&&/1[358]\d{9}$/.test($(this).val())){
+        if ($(this).val() !== "" && /1[34578]\d{9}$/.test($(this).val())) {
 
-            } else {
-                if ($(this).val() !== "") {
-                    $(this)[0].placeholder = "";
-                }
-                if ($(this)[0].placeholder == "") {
-                    registration_input_email_or_phone_infor(true, "不正确的哦")
-                }
+        } else {
+            if ($(this).val() !== "") {
+                $(this)[0].placeholder = "";
             }
+            if ($(this)[0].placeholder == "") {
+                registration_input_email_or_phone_infor(true, "不正确的哦")
+            }
+        }
 
-        }).on("focus", function() {
-            registration_fsw_success_infor(false, "");
-            registration_fsw_querr_infor(false, "");
-            registration_input_email_or_phone_infor(false, "");
-            $(this)[0].placeholder = "";
+    }).on("focus", function () {
+        registration_fsw_success_infor(false, "");
+        registration_fsw_querr_infor(false, "");
+        registration_input_email_or_phone_infor(false, "");
+        $(this)[0].placeholder = "";
 
-        })
-        //注册页面密码框
-    $("#registration_form .registration_password").on("blur", function() {
+    })
+    //注册页面密码框
+    $("#registration_form .registration_password").on("blur", function () {
         $(this)[0].placeholder = "请输入密码";
         registration_input_password_infor(false, "");
         if ($(this).val() !== "") {
@@ -164,7 +164,7 @@ $(document).ready(function() {
         if (this.placeholder == "" && $(this).val().length < 8) {
             registration_input_password_infor(true, "输入密码必须大于等于8位字符");
         }
-    }).on("focus", function() {
+    }).on("focus", function () {
         registration_fsw_success_infor(false, "");
         registration_fsw_querr_infor(false, "");
         registration_input_password_infor(false, "");
@@ -173,7 +173,7 @@ $(document).ready(function() {
 
 
     // 注册页面确认密码输入框
-    $("#registration_form .registration_confirm_password").on("blur", function() {
+    $("#registration_form .registration_confirm_password").on("blur", function () {
         $(this)[0].placeholder = "请确认密码";
         registration_input_password_infor(false, "");
         if ($(this).val() !== "") {
@@ -182,7 +182,7 @@ $(document).ready(function() {
         if (this.placeholder == "" && $(this).val() !== $("#registration_form .registration_password").val()) {
             registration_input_password_infor(true, "两次密码输入不一致");
         }
-    }).on("focus", function() {
+    }).on("focus", function () {
         registration_fsw_success_infor(false, "");
         registration_fsw_querr_infor(false, "");
         registration_input_password_infor(false, "");
@@ -192,7 +192,7 @@ $(document).ready(function() {
 
 
     //提交注册
-    $registrationForm.on("submit", function(event) {
+    $registrationForm.on("submit", function (event) {
         registration_fsw_success_infor(false, "");
         registration_fsw_querr_infor(false, "");
         event.preventDefault();
@@ -233,13 +233,13 @@ $(document).ready(function() {
                 url: "/user",
                 type: 'POST',
                 data: data,
-                success: function(re) {
+                success: function (re) {
                     // console.log("data="+data);
                     var re = JSON.parse(re);
                     // console.log(re);
                     if (re.result == "true") {
                         registration_fsw_success_infor(true, "注册成功");
-                        setTimeout(function() {
+                        setTimeout(function () {
                             registration_fsw_success_infor(false, "");
                         }, 4000);
                         // window.setTimeout("window.location='login.html'",30000);
@@ -255,7 +255,7 @@ $(document).ready(function() {
                     }
 
                 },
-                error: function() {
+                error: function () {
                     console.log("Registration：error");
                     console.log("data=" + data);
                     registration_fsw_querr_infor(true, "当前网络错误，请重新连接");
@@ -276,97 +276,99 @@ $(document).ready(function() {
     //    	login_submit();
     // 	});
 
-    $loginForm.on("submit", function(event) {
-            // function login_submit(){
-            event.preventDefault();
-            var _data = {};
-            var _cookiedata = [];
-            login_form_userName_error_infor(false, "");
-            login_fsw_querr_infor(false, "");
-            login_fsw_success_infor(false, "");
-            var $emailPhoneVal = $emailPhone.val();
-            var $loginPasswordVal = $loginPassword.val();
-            var $loginUserName = $("#login_form .login_form_userName input[type='text']").val();
-            //$registrationFormPasswordValue=$registrationFormPassword.val();
-            if ($emailPhoneVal == "") {
-                login_input_email_or_phone_infor(true, "用户名不能为空");
-            } else if ($loginPasswordVal == "") {
-                login_input_password_infor(true, "密码不能为空");
-            } else {
-                var fsw_obj = {
-                    action: "login",
-                    userData: $emailPhoneVal,
-                    password: $loginPasswordVal
-                };
-                if (!$("#login_form .login_form_userName input[type='text']").is(":hidden")) {
-                    if ($loginUserName != "") {
-                        fsw_obj.username = $loginUserName;
-                    }
+    $loginForm.on("submit", function (event) {
+        // function login_submit(){
+        event.preventDefault();
+        var _data = {};
+        var _cookiedata = [];
+        login_form_userName_error_infor(false, "");
+        login_fsw_querr_infor(false, "");
+        login_fsw_success_infor(false, "");
+        var $emailPhoneVal = $emailPhone.val();
+        var $loginPasswordVal = $loginPassword.val();
+        var $loginUserName = $("#login_form .login_form_userName input[type='text']").val();
+        //$registrationFormPasswordValue=$registrationFormPassword.val();
+        if ($emailPhoneVal == "") {
+            login_input_email_or_phone_infor(true, "用户名不能为空");
+        } else if ($loginPasswordVal == "") {
+            login_input_password_infor(true, "密码不能为空");
+        } else {
+            var fsw_obj = {
+                action: "login",
+                userData: $emailPhoneVal,
+                password: $loginPasswordVal
+            };
+            if (!$("#login_form .login_form_userName input[type='text']").is(":hidden")) {
+                if ($loginUserName != "") {
+                    fsw_obj.username = $loginUserName;
                 }
-                var _iserro = $(".fsw_juerr").children();
-                for (var _indexErr = 0; _indexErr < _iserro.length; _indexErr++) {
-                    if (_iserro[_indexErr].innerText != "") {
-                        return;
-                    }
-                }
-
-                _data = get_input_data(fsw_obj);
-                $.ajax({
-                    url: "/user",
-                    type: 'POST',
-                    data: _data,
-                    success: function(re) {
-                        var re = JSON.parse(re);
-                        // console.log("re",re);
-                        if (re.result == "true") {
-                            //单个用户
-                            setCookie("uuid", re.uuid, 0);
-                            login_fsw_success_infor(true, "登录成功");
-                            _cookiedata[0] = $emailPhoneVal;
-                            _cookiedata[1] = re.uuid;
-                            if ($("#login_form .remember input[type='checkbox']")[0].checked) {
-                                setCookie("isgoto", true, 7);
-                                // setCookie("uuid",_cookiedata[1],7);
-                                setCookie("uuid", _cookiedata[1], 0.21);
-                            } else {
-                                setCookie("isgoto", false, 7);
-                                setCookie("uuid", _cookiedata[1], 1);
-                            }
-                            goTohtml();
-                        } else {
-                            if (re.errorno == "E01071") {
-                                // console.log(re);
-                                $("#fsw_bj").css("display", 'block');
-                                $("#user_login").css("display", 'block');
-                                create_login_jiemian(re.reasons);
-                            } else authenticateUser(re.errorno);
-                        }
-                    },
-                    error: function(re) {
-                        console.log("Registration：error");
-                        console.log("data=" + this.data);
-                        login_fsw_querr_infor(true, "当前网络错误请重新连接")
-                    }
-                });
             }
-            // }
-        })
-        //点击注册页面
-    $user_registration.on('click', function(event) {
-            registration_init();
-            $(this).css({ "display": "none" });
-            $("#fsw_bj").css("display", 'none');
-            $("#user_registration .fsw_registration_box1").empty();
-        })
-        //点击登录界面
-    $userLogin.on("click", function(event) {
-            login_init();
-            $("#fsw_bj").css("display", 'none');
-            $(this).css("display", 'none');
-            $("#user_login .fsw_box1").empty();
-        })
-        //勾选多选框
-    $("#login_form .remember input[type='checkbox']").click(function() {
+            var _iserro = $(".fsw_juerr").children();
+            for (var _indexErr = 0; _indexErr < _iserro.length; _indexErr++) {
+                if (_iserro[_indexErr].innerText != "") {
+                    return;
+                }
+            }
+
+            _data = get_input_data(fsw_obj);
+            $.ajax({
+                url: "/user",
+                type: 'POST',
+                data: _data,
+                success: function (re) {
+                    var re = JSON.parse(re);
+                    // console.log("re",re);
+                    if (re.result == "true") {
+                        //单个用户
+                        setCookie("uuid", re.uuid, 0);
+                        login_fsw_success_infor(true, "登录成功");
+                        _cookiedata[0] = $emailPhoneVal;
+                        _cookiedata[1] = re.uuid;
+                        if ($("#login_form .remember input[type='checkbox']")[0].checked) {
+                            setCookie("isgoto", true, 7);
+                            // setCookie("uuid",_cookiedata[1],7);
+                            setCookie("uuid", _cookiedata[1], 0.21);
+                        } else {
+                            setCookie("isgoto", false, 7);
+                            setCookie("uuid", _cookiedata[1], 1);
+                        }
+                        goTohtml();
+                    } else {
+                        if (re.errorno == "E01071") {
+                            // console.log(re);
+                            $("#fsw_bj").css("display", 'block');
+                            $("#user_login").css("display", 'block');
+                            create_login_jiemian(re.reasons);
+                        } else authenticateUser(re.errorno);
+                    }
+                },
+                error: function (re) {
+                    console.log("Registration：error");
+                    console.log("data=" + this.data);
+                    login_fsw_querr_infor(true, "当前网络错误请重新连接")
+                }
+            });
+        }
+        // }
+    })
+    //点击注册页面
+    $user_registration.on('click', function (event) {
+        registration_init();
+        $(this).css({
+            "display": "none"
+        });
+        $("#fsw_bj").css("display", 'none');
+        $("#user_registration .fsw_registration_box1").empty();
+    })
+    //点击登录界面
+    $userLogin.on("click", function (event) {
+        login_init();
+        $("#fsw_bj").css("display", 'none');
+        $(this).css("display", 'none');
+        $("#user_login .fsw_box1").empty();
+    })
+    //勾选多选框
+    $("#login_form .remember input[type='checkbox']").click(function () {
         if (this.checked) {
             setCookie("checkbox", "true", 7);
         } else {
@@ -380,7 +382,7 @@ $(document).ready(function() {
     if (document.URL.lastIndexOf('uuid') != -1) {
         $("#login_form .remember span").eq(1).text('修改密码');
         var password_uuid = document.URL.slice(document.URL.lastIndexOf('uuid'), document.URL.length);
-        $("#login_form .remember span").eq(1).click(function() {
+        $("#login_form .remember span").eq(1).click(function () {
             window.location.href = 'https://' + document.domain + '/password.html?' + password_uuid;
         })
     }
@@ -389,40 +391,44 @@ $(document).ready(function() {
     //登陆页面与注册页面切换
     //--------------------
     //登录页面切换到注册页面
-    $("#login").click(function() {
-            login_fsw_querr_infor(false, "");
-            registration_fsw_querr_infor(false, "");
-            registration_fsw_success_infor(false, "");
-            login_fsw_success_infor(false, "");
-            $("#registration_form .registration_input_username").val("");
-            // $("#registration_form .input_username").css({"display":"none"});
-            $("#registration_form .registration_input_username").css({ "display": "blck" });
-            $("#registration_form .registration_password").val("");
-            $emailPhone.trigger("blur");
-            $("#login_form .login_password").trigger("blur");
-            $move.animate({
-                left: "0px",
-            }, 300);
+    $("#login").click(function () {
+        login_fsw_querr_infor(false, "");
+        registration_fsw_querr_infor(false, "");
+        registration_fsw_success_infor(false, "");
+        login_fsw_success_infor(false, "");
+        $("#registration_form .registration_input_username").val("");
+        // $("#registration_form .input_username").css({"display":"none"});
+        $("#registration_form .registration_input_username").css({
+            "display": "blck"
+        });
+        $("#registration_form .registration_password").val("");
+        $emailPhone.trigger("blur");
+        $("#login_form .login_password").trigger("blur");
+        $move.animate({
+            left: "0px",
+        }, 300);
+    })
+    //注册页面切换到登录
+    $("#registration").click(function () {
+        login_fsw_querr_infor(false, "");
+        login_form_userName_error_infor(false, "");
+        registration_fsw_querr_infor(false, "");
+        registration_fsw_success_infor(false, "");
+        login_fsw_success_infor(false, "");
+        $("#login_form .login_password").val("");
+        $("#login_form .login_form_userName").css({
+            "display": "none"
         })
-        //注册页面切换到登录
-    $("#registration").click(function() {
-            login_fsw_querr_infor(false, "");
-            login_form_userName_error_infor(false, "");
-            registration_fsw_querr_infor(false, "");
-            registration_fsw_success_infor(false, "");
-            login_fsw_success_infor(false, "");
-            $("#login_form .login_password").val("");
-            $("#login_form .login_form_userName").css({ "display": "none" })
-            $("#login_form .login_form_userName input[type='text']").val("");
-            $emailByphone.trigger("blur");
-            $("#registration_form .registration_password").trigger("blur");
-            $move.animate({
-                left: "135px",
-            }, 300);
-        })
-        //------------------------
-        //登陆页面
-        //------------------------
+        $("#login_form .login_form_userName input[type='text']").val("");
+        $emailByphone.trigger("blur");
+        $("#registration_form .registration_password").trigger("blur");
+        $move.animate({
+            left: "135px",
+        }, 300);
+    })
+    //------------------------
+    //登陆页面
+    //------------------------
     var _userlistpPage = 0;
     var _login_index = 0;
     //登录界面初始化
@@ -432,14 +438,14 @@ $(document).ready(function() {
         _login_index = 0;
     }
     //向左滑动
-    $("#user_login .user_qiehua").find(".user_qiehua-left").click(function(event) {
+    $("#user_login .user_qiehua").find(".user_qiehua-left").click(function (event) {
         _login_index = _login_index <= 0 ? $_page - 1 : _login_index - 1;
         $("#user_login .login_userlist .fsw_box1").find(".login_userlist_info").eq(_login_index).show()
             .siblings().hide();
         event.stopPropagation();
     });
     //向右滑动
-    $("#user_login .user_qiehua").find(".user_qiehua_right").click(function(event) {
+    $("#user_login .user_qiehua").find(".user_qiehua_right").click(function (event) {
         _login_index = _login_index >= $_page - 1 ? 0 : _login_index + 1;
         $("#user_login .login_userlist .fsw_box1").find(".login_userlist_info").eq(_login_index).show()
             .siblings().hide();
@@ -447,7 +453,7 @@ $(document).ready(function() {
     })
 
     // 多用户时，检查密码操作
-    $("#user_login .login_box1 .login_userlist").delegate(".login_danuser_info_img", "click", function() {
+    $("#user_login .login_box1 .login_userlist").delegate(".login_danuser_info_img", "click", function () {
         var $emailPhoneVal = $emailPhone.val();
         var $loginPasswordVal = $loginPassword.val();
         var _data = {};
@@ -472,7 +478,7 @@ $(document).ready(function() {
             url: "/user",
             type: 'POST',
             data: _data,
-            success: function(re) {
+            success: function (re) {
                 var re = JSON.parse(re);
 
                 if (re.result == "true") {
@@ -493,13 +499,15 @@ $(document).ready(function() {
                         login_input_email_or_phone_infor(true, "用户不存在");
                     } else if (re.errorno == "E01080") {
                         login_input_password_infor(true, "密码不正确");
-                        $("#login_form .login_form_userName").css({ "display": "block" })
+                        $("#login_form .login_form_userName").css({
+                            "display": "block"
+                        })
                         $("#login_form .login_form_userName input[type='text']").val($loginUserName1);
                         $("#login_form .login_password").val('');
                     }
                 }
             },
-            error: function(re) {
+            error: function (re) {
                 console.log("Registration：error");
                 console.log("data=" + this.data);
                 login_fsw_querr_infor(false, "当前网络错误，请重新连接");
@@ -516,23 +524,27 @@ $(document).ready(function() {
         $registration_index = 0;
     }
     //向左滑动
-    $("#user_registration .registration_qiehua").find(".registration_qiehua-left").click(function(event) {
+    $("#user_registration .registration_qiehua").find(".registration_qiehua-left").click(function (event) {
         $registration_index = $registration_index <= 0 ? $registration_page - 1 : $registration_index - 1;
         $("#user_registration .registration_userlist .fsw_registration_box1").find(".registration_userlist_info").eq($registration_index).show()
             .siblings().hide();
         event.stopPropagation();
     });
     //向右滑动
-    $("#user_registration .registration_qiehua").find(".registration_qiehua_right").click(function(event) {
+    $("#user_registration .registration_qiehua").find(".registration_qiehua_right").click(function (event) {
         $registration_index = $registration_index >= $registration_page - 1 ? 0 : $registration_index + 1;
         $("#user_registration .registration_userlist .fsw_registration_box1").find(".registration_userlist_info").eq($registration_index).show()
             .siblings().hide();
         event.stopPropagation();
     });
     //点击注册
-    $("#user_registration  .registration_btn").click(function(event) {
-        $("#user_registration").css({ "display": "none" });
-        $("#registration_form .input_username").css({ "display": "block" })
+    $("#user_registration  .registration_btn").click(function (event) {
+        $("#user_registration").css({
+            "display": "none"
+        });
+        $("#registration_form .input_username").css({
+            "display": "block"
+        })
         $("#fsw_bj").css("display", 'none');
         $("#user_registration .fsw_registration_box1").empty();
         event.stopPropagation();
@@ -718,7 +730,11 @@ $(document).ready(function() {
     function login_fsw_success_infor(parma1, parma2) {
         var _fswx = $("#login_form .login_success");
         var _fswy = $("#login_form .login_success .login_success_infor");
-        parma1 ? _fswx.css({ "display": "block" }) : _fswx.css({ "display": "none" });
+        parma1 ? _fswx.css({
+            "display": "block"
+        }) : _fswx.css({
+            "display": "none"
+        });
         _fswy.text(parma2);
     }
     //-----------------------------
@@ -753,7 +769,11 @@ $(document).ready(function() {
     function login_fsw_querr_infor(parma1, parma2) {
         var _fswx = $("#login_form .fsw_querr");
         var _fswy = $("#login_form .fsw_querr .fsw_querr_infor");
-        parma1 ? _fswx.css({ "display": "block" }) : _fswx.css({ "display": "none" });
+        parma1 ? _fswx.css({
+            "display": "block"
+        }) : _fswx.css({
+            "display": "none"
+        });
         _fswy.text(parma2);
     }
     //-----------------------------
@@ -762,7 +782,11 @@ $(document).ready(function() {
     function registration_fsw_querr_infor(parma1, parma2) {
         var _fswx = $(" #registration_form .fsw_querr");
         var _fswy = $("#registration_form .fsw_querr .fsw_querr_infor");
-        parma1 ? _fswx.css({ "display": "block" }) : _fswx.css({ "display": "none" });
+        parma1 ? _fswx.css({
+            "display": "block"
+        }) : _fswx.css({
+            "display": "none"
+        });
         _fswy.text(parma2);
     }
     //-----------------------------
@@ -771,7 +795,11 @@ $(document).ready(function() {
     function registration_fsw_success_infor(parma1, parma2) {
         var _fswx = $("#registration_form .registration_success");
         var _fswy = $("#registration_form .registration_success .registration_success_infor");
-        parma1 ? _fswx.css({ "display": "block" }) : _fswx.css({ "display": "none" });
+        parma1 ? _fswx.css({
+            "display": "block"
+        }) : _fswx.css({
+            "display": "none"
+        });
         _fswy.text(parma2);
     }
     //-----------------------------
@@ -848,9 +876,9 @@ $(document).ready(function() {
     //页面跳转
     //-----------------------------
     function goTohtml() {
-        if(IsPC()){
+        if (IsPC()) {
             window.location.href = '/index.html';
-        }else{
+        } else {
             window.location.href = "/mymeidai.html";
         }
     }

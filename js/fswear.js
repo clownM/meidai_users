@@ -33,7 +33,7 @@ function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires=" + d.toGMTString();
-    document.cookie = cname + "=" + cvalue + "; " + expires;
+    document.cookie = cname + "=" + cvalue + "; " + expires+";path=/";
 };
 
 //获得Cookie
@@ -52,8 +52,10 @@ function delCookie(name) {
     var exp = new Date();
     exp.setTime(exp.getTime() - 1);
     var cval = getCookie(name);
-    if (cval != null)
-        document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+    if (cval != null){
+        document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString()+";path=/";
+        // document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString()+";path=/userinfo";
+    }
 }
 
 //检测登录状态
@@ -214,9 +216,8 @@ $(document).ready(function() {
     if (IsPC()) {
         $('.navbar-pc').load("navbar.html .user_nav", function() {
             
-            $(".content").css({"width":"70%","margin":"0 auto"});
-            $(".top-fixed").css("display","none");
-
+            $(".content").css({"width":"60%","margin":"0 auto"});
+            $(".go-back").css("display","none")
             /****** 设置头像和用户名 ******/
             // console.log(getCookie("uuid"))
             if (getCookie("uuid") != '') {

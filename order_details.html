@@ -34,7 +34,12 @@
         </div>
         <div class="orderdetails">
             <div class="status">
-                <span v-text=" orderstatus">
+                <template v-if="delivery_state != ''">
+                        <span v-text="delivery_state"></span>
+                </template>
+                <template v-else>
+                    <span v-text=" orderstatus">
+                </template>
             </div>
             <div class="wuliu">
                 <div class="wuliu-top">

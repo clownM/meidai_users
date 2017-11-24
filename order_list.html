@@ -28,34 +28,34 @@
     <div class='navbar-pc'></div>
     <!-- 页面展示内容 -->
     <div id="loading">loading……</div>
+    <div class="top-fixed">
+        <div class="go-back">
+            <span class="icon-back"></span>
+            <p>我的订单</p>
+        </div>
+    </div>
     <div class="content" id="content" style="display:none">
-        <div class="top-fixed">
-            <div class="go-back">
-                <span class="icon-back"></span>
-                <p>我的订单</p>
-            </div>
-        </div>
-        <div class="tabs-head">
-            <ul class="tabs-ul">
-                <li>
-                    <a class="active" href="javascript:0">全部</a>
-                </li>
-                <li>
-                    <a href="javascript:0">待扫描</a>
-                </li>
-                <li>
-                    <a href="javascript:0">待支付</a>
-                </li>
-                <li>
-                    <a href="javascript:0">生产中</a>
-                </li>
-                <li>
-                    <a href="javascript:0">待收货</a>
-                </li>
-                <div id="clearBoth"></div>
-            </ul>
-        </div>
         <div class="tabs-body" id="tabs-body">
+            <div class="tabs-head">
+                <ul class="tabs-ul">
+                    <li>
+                        <a class="active" href="javascript:0">全部</a>
+                    </li>
+                    <li>
+                        <a href="javascript:0">待扫描</a>
+                    </li>
+                    <li>
+                        <a href="javascript:0">待支付</a>
+                    </li>
+                    <li>
+                        <a href="javascript:0">生产中</a>
+                    </li>
+                    <li>
+                        <a href="javascript:0">待收货</a>
+                    </li>
+                    <div id="clearBoth"></div>
+                </ul>
+            </div>
             <!-- 全部订单 -->
             <div class="tabs-contents active">
                 <div class="failorder" v-if="isEmpty(toscan_array) && isEmpty(topay_array) && isEmpty(printing_array) && isEmpty(delivering_array) && isEmpty(done_array)">
@@ -183,7 +183,9 @@
                         <div class="order-footer">
                             <span class="orderuuid-hidden">{{ deal.orderuuid }}</span>
                             <span class="dealuuid-hidden">{{ deal.uuid }}</span>
-                            <button class="">查看物流</button>
+                            <span class="delivery-company-hidden">{{ deal.delivery_company }}</span>
+                            <span class="delivery-postid-hidden">{{ deal.delivery_postid }}</span>
+                            <button class="to_delivery">查看物流</button>
                             <button class="">确认收货</button>
                             <button class="to_order_details">订单详情</button>
                         </div>
@@ -370,7 +372,9 @@
                         <div class="order-footer">
                             <span class="orderuuid-hidden">{{ deal.orderuuid }}</span>
                             <span class="dealuuid-hidden">{{ deal.uuid }}</span>
-                            <button class="">查看物流</button>
+                            <span class="delivery-company-hidden">{{ deal.delivery_company }}</span>
+                            <span class="delivery-postid-hidden">{{ deal.delivery_postid }}</span>
+                            <button class="to_delivery">查看物流</button>
                             <button class="">确认收货</button>
                             <button class="to_order_details">订单详情</button>
                         </div>

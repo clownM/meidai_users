@@ -30,10 +30,14 @@ $(function () {
     //将订单的uuid全部放入数组中
     var order_uuid_arr = [];
     var cancelOrder_uuid_arr = [];
-    if(IsPC()){
-        $(".tabs-head").css("width","70%");
-    }else{
-        $(".tabs-head").css("width","100%");
+    if (IsPC()) {
+        $(".tabs-head").css({
+            "width": "70%",
+            "position": "static",
+            "margin-bottom": "10px"
+        });
+    } else {
+        $(".tabs-head").css("width", "100%");
     }
     var vm = new Vue({
         el: '#content',
@@ -61,6 +65,16 @@ $(function () {
                     setCookie("orderuuid", orderuuid, 1);
                     setCookie("dealuuid", dealuuid, 1);
                     window.location.href = "order_details.html";
+                });
+
+                // 查看物流
+                $(".to_delivery").click(function () {
+                    var delivery_company = $(this).siblings(".delivery-company-hidden").text();
+                    var delivery_postid = $(this).siblings(".delivery-postid-hidden").text();
+                    console.log("delivery_company:" + delivery_company + "\n delivery_postid:" + delivery_postid);
+                    sessionStorage.setItem("delivery_company",delivery_company);
+                    sessionStorage.setItem("delivery_postid",delivery_postid);
+                    window.location.href = "/delivery.html";
                 });
 
                 //取消订单
@@ -223,6 +237,7 @@ $(function () {
                                                                 async: false,
                                                                 url: "/deal",
                                                                 success: function (dt) {
+
                                                                     if (dt.result != 'false') {
                                                                         // 待支付
                                                                         var dealCreatedate = get_createdate(create_time(dt.createdate));
@@ -257,6 +272,25 @@ $(function () {
                                                                             });
                                                                             //运输中（待收货）
                                                                         } else if (dt.paymentstatus == "paid" && dt.status == "delivering") {
+                                                                            var delivery = dt.delivery;
+                                                                            var delivery_company,
+                                                                                delivery_postid;
+                                                                            if (delivery == "") {
+                                                                                delivery_company = "";
+                                                                                delivery_postid = ""
+                                                                            } else {
+                                                                                delivery = JSON.parse(delivery);
+                                                                                console.log(delivery);
+                                                                                if (delivery.postprocessing_delivery == undefined) {
+                                                                                    delivery_company = delivery.production_delivery.courier_company;
+                                                                                    delivery_postid = delivery.production_delivery.courier_number;
+                                                                                } else {
+                                                                                    delivery_company = delivery.postprocessing_delivery.courier_company;
+                                                                                    delivery_postid = delivery.postprocessing_delivery.courier_number;
+                                                                                }
+                                                                            }
+
+
                                                                             delivering_array.push({
                                                                                 "orderno": orderno,
                                                                                 "orderuuid": orderUuid,
@@ -268,7 +302,9 @@ $(function () {
                                                                                 "scandate": scandate,
                                                                                 "orderCreatedate": orderCreateDate,
                                                                                 "dealCreatedate": dealCreatedate,
-                                                                                "discount": dt.discount
+                                                                                "discount": dt.discount,
+                                                                                "delivery_company": delivery_company,
+                                                                                "delivery_postid": delivery_postid
                                                                             });
                                                                             // 已完成
                                                                         } else if (dt.paymentstatus == "paid" && dt.status == "done") {

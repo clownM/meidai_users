@@ -6,6 +6,7 @@
     border-top: 1px solid rgb(240, 240, 240);
     position: fixed;
     top: 50px;
+    z-index: 999;
 }
 
 .tabs-head ul li {
@@ -124,7 +125,9 @@
     background-color: rgb(240, 240, 240);
 }
 .orderuuid-hidden,
-.dealuuid-hidden
+.dealuuid-hidden,
+.delivery-company-hidden,
+.delivery-postid-hidden
 {
     display: none;
 }
