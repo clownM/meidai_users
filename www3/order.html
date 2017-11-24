@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>所有订单</title>
+    
+    <link href="3rd/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/individual/fswear.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+      <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="3rd/jquery.min.js"></script>
+    <script type="text/javascript" src='js/individual/nav.js'></script>
+
+    <script type="text/javascript" src='js/individual/jquery.wdffswear.js'></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="3rd/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <style>
+                   
+    </style>
+</head>
+<body>
+    
+    <!-- 导航开始 -->   
+    <div id='nav_content'></div>
+    <!-- 导航结束 END-->
+    <!-- 所有订单 -->
+    <div class='container indent'>
+        <a href="appointment.html"><button type="button" class="btn btn-danger btn-lg"><b>没有预约，马上点击</b></button></a>
+        <div class='indent-nav'>
+            <ul>
+                <li>所有订单
+                    <span>|</span>
+                </li>
+                <li>一月内
+                    <span>|</span>
+                </li>
+                <li>一年内</li>
+                <div class="nav-line"></div>
+            <ul>
+        </div>
+        <!-- 待付款 -->
+        <div class='indent-content box-shadow'>
+             <div class='content-top'>
+                <ul class='content-top-sm hidden-xs'>
+                    <li class='pull-left'>
+                        <b>2016.08.22 订单编号：201608225216001</b>
+                    </li>
+                    <li class='pull-left'></li>
+                    <li class='pull-right label label-danger hidden-xs'>待付款</li>
+                </ul>
+                <ul class='content-top-xs visible-xs'>
+                    <li>
+                        <b>2016.08.22 订单编号：201608225216001</b>
+                    </li>
+                    <li class='label label-danger'>待付款</li>
+                </ul>
+            </div>
+            <div class='content-bottom'>
+                <div class='col-xs-12 col-sm-6 col-md-4 col-lg-4'>
+                    <img src="images/1.png">
+                </div>
+                <div class=' col-xs-12 col-sm-6 col-md-4 col-lg-4'>
+
+                    <div class='bottom-center col-xs-6 col-sm-6 col-md-6 col-lg-6'>
+                        <span class="label label-danger">价 &nbsp;&nbsp;&nbsp;&nbsp; 格</span>
+                        <span class="label label-danger">镜 &nbsp;&nbsp;&nbsp;&nbsp; 型</span>
+                        <span class="label label-danger">镜型颜色</span>
+                        <span class="label label-danger">镜腿颜色</span>
+                    </div>
+                    <div class='bottom-center col-xs-6 col-sm-6 col-md-6 col-lg-6'>
+                        <span>只要998</span>
+                        <span>方形</span>
+                        <span>黑色</span>
+                        <span>黑色</span>
+                    </div>
+                </div> 
+                <div class='bottom-right col-md-4 col-lg-4 hidden-sm visible-md visible-lg'>
+                    <button type="button" class="btn btn-info btn-sm">进行付款</button>
+                    <button type="button" class="btn btn-danger btn-sm">重新选择</button>
+                </div>
+                <div class='bottom-right col-xs-12 col-sm-12 visible-sm visible-xs'>
+                    <button type="button" class="btn btn-info btn-sm">进行付款</button>
+                    <button type="button" class="btn btn-danger btn-sm">重新选择</button>
+                </div>
+            </div>
+        </div>       
+        <!-- 待付款 END -->
+
+
+        <!-- 待扫描，已经过期 -->           
+        <div class='indent-content box-shadow'>
+            <div class='content-top'>
+                <ul class='content-top-sm hidden-xs'>
+                    <li class='pull-left'>
+                        <b>2016.08.22 订单编号：201608225216001</b>
+                    </li>
+                    <li class='pull-left'></li>
+                    <li class='pull-right label label-default'>待扫描</li>
+                </ul>
+                <ul class='content-top-xs visible-xs'>
+                    <li>
+                        <b>2016.08.22 订单编号：201608225216001</b>
+                    </li>
+                    <li class='label label-default'>待扫描</li>
+                </ul>
+            </div>
+            <div class='content-bottom'>
+                <div class='col-xs-12 col-sm-6 col-md-4 col-lg-4'>
+                    <img src="images/5.jpg">
+                </div>
+                
+                <div class='bottom-center col-xs-12 col-sm-6 col-md-4 col-lg-4' style=''>
+                    <span class='label label-danger'>已过期</span>
+                    <li>&nbsp;&nbsp;&nbsp;2016年8月31日 上午</li>
+                    <big>9:00</big>
+                </div> 
+                <div class='bottom-right  col-md-4 col-lg-4 hidden-sm visible-md visible-lg'>
+                    <button type="button" class="btn btn-info btn-sm">修改时间</button>
+                    <button type="button" class="btn btn-info btn-sm">修改地点</button>
+                    <button type="button" class="btn btn-danger btn-sm">重新激活</button>
+                </div>
+                 <div class='bottom-right col-xs-12 col-sm-12 visible-sm visible-xs'>
+                    <button type="button" class="btn btn-info btn-sm">修改时间</button>
+                    <button type="button" class="btn btn-info btn-sm">修改地点</button>
+                    <button type="button" class="btn btn-danger btn-sm">重新激活</button>
+                </div>
+            </div>       
+        </div>
+        <!-- 待扫描，已经过期 END -->
+
+
+        <!-- 待扫描，预约时间的 -->
+
+        <div class='indent-content box-shadow'>
+            <div class='content-top'>
+                <ul class='content-top-sm hidden-xs'>
+                    <li class='pull-left'>
+                        <b>2016.08.22 订单编号：201608225216001</b>
+                    </li>
+                    <li class='pull-left'></li>
+                    <li class='pull-right label label-danger'>待扫描</li>
+                </ul>
+                <ul class='content-top-xs visible-xs'>
+                    <li>
+                        <b>2016.08.22 订单编号：201608225216001</b>
+                    </li>
+                    <li class='label label-danger'>待扫描</li>
+                </ul>
+            </div>
+            <div class='content-bottom'>
+                <div class='col-xs-12 col-sm-6 col-md-4 col-lg-4'>
+                    <img src="images/5.jpg">
+                </div>
+                
+                <div class='bottom-center col-xs-12 col-sm-6 col-md-4 col-lg-4' style=''>
+                    <span class='label label-info'>预约时间</span>
+                    <li>&nbsp;&nbsp;&nbsp;2016年8月31日 上午</li>
+                    <p>9:00</p>
+                </div> 
+                <div class='bottom-right  col-md-4 col-lg-4 hidden-sm visible-md visible-lg'>
+                    <button type="button" class="btn btn-info btn-sm">修改时间</button>
+                    <button type="button" class="btn btn-info btn-sm">修改地点</button>
+                    <button type="button" class="btn btn-danger btn-sm">取消扫描</button>
+                </div>
+                 <div class='bottom-right col-xs-12 col-sm-12 visible-sm visible-xs'  style=''>
+                    <button type="button" class="btn btn-info btn-sm" style="margin-top:30px;">修改时间</button>
+                    <button type="button" class="btn btn-info btn-sm" style="margin-top:30px;">修改地点</button>
+                    <button type="button" class="btn btn-danger btn-sm" style="margin-top:30px;">取消扫描</button>
+                </div>
+            </div>       
+        </div>
+      
+        <!-- 待扫描，预约时间的 END -->
+
+    </div>
+    <!-- 所有订单 END -->
+  
+
+		<script>
+            // 引入顶部导航
+            $('#nav_content').nav();
+
+
+			/**
+			 * 初始化信息
+			 * */
+			function init_infor() {
+				var init_data = {
+					"action": "query",
+					"uuid": "42580d2b17eaf7e04da0220cd7af4097",
+					"phone": "",
+					"username": "",
+					"gender": "",
+					"birthday": "",
+					"orders": "",
+					"lastorder": ""
+				};
+				$.ajax({
+					type: "post",
+					data: init_data,
+					dataType: "json",
+					url: "/user",
+					success: function(data) {
+						console.log(data);
+		
+						for(var i = 0; i < data.orders.length; i++) {
+							var _hashorder = hashCode(data.orders[i]);
+							query_order(data.orders[i], _hashorder);
+						}
+					},
+					error: function() {
+		
+					}
+				});
+			}
+			init_infor();
+			/**
+			 * 哈希
+			 * */
+			function hashCode(str) {
+				var hash = 5381;
+				for(i = 0; i < str.length; i++) {
+					char = str.charCodeAt(i);
+					hash = ((hash << 5) + hash) + char; /* hash * 33 + c */
+				}
+				return Math.abs(hash);
+			}
+			/**
+			 * 将格式MFC2822时间转化时间格式
+			 * */
+			function create_time(ordertime) {
+				var _date = new Date(ordertime);
+				var order_date = {};
+				order_date._year = _date.getFullYear();
+				order_date._month = _date.getMonth();
+				order_date._day = _date.getDate();
+				order_date._hour = _date.getHours();
+				order_date._minute =_date.getMinutes();
+				return order_date;
+			}
+			/**
+			 * 预定时间是am或者是pm
+			 * */
+			function get_amOrpm(houer) {
+				var result = houer <= 12 ? "上午" : "下午"
+				return result;
+			}
+			/**
+			 * 是否预期
+			 * */
+			function is_expected(time) {
+				var _date = new Date();
+				var _nowtime = _date.getTime();
+				var _expected = Date.parse(time);
+				return _nowtime > _expected ? true : false;
+			}
+			/**
+			 *查询订单
+			 * */
+			function query_order(orderuuid, parm2) {
+				var order_data = {
+					"action": "query",
+					"uuid": orderuuid,
+					"createdate": "",
+					"head": "",
+					"config": "",
+					"genobj": "",
+					"deals": "",
+					"station": "",
+					"appointmentdate": "",
+					"scandate": "",
+					"pinfo": "",
+					"status": "",
+					"preconfig": "",
+					"collecteddata": "",
+				};
+				$.ajax({
+					type: "post",
+					data: order_data,
+					dataType: "json",
+					url: "/order",
+					success: function(data) {
+						var _lastOrdernumber = parm2;
+						var create_ordertime = create_time(data.createdate);
+						var appointment_time = create_time(data.appointmentdate);
+						var amorpm = get_amOrpm(appointment_time._hour);
+						var _isexpected = is_expected(data.appointmentdate);
+						var _userordertext = [];
+						_userordertext[0] = create_ordertime._year + "." + create_ordertime._month + "." + create_ordertime._day;
+						_userordertext[1] = "" + create_ordertime._year + create_ordertime._month + create_ordertime._day + _lastOrdernumber;
+						_userordertext[2] = _isexpected ? "已过期" : "预约时间";
+						_userordertext[3] = appointment_time._year + "年" + appointment_time._month + "月" + appointment_time._day + "日" +"<br/>"+ amorpm;
+						if(/N/.test(_userordertext[3])) {
+							return;
+						}
+						_userordertext[4] = appointment_time._hour + ":" + (appointment_time._minute<10?"0"+appointment_time._minute:appointment_time._minute);
+						_isexpected ? create_overduehtml($(".indent"), _userordertext) : create_notoverduehtml($(".indent"), _userordertext);
+					},
+					error: function() {
+		
+					}
+				});
+		
+			}
+			//动态创建未逾期未处理的订单
+			function create_overduehtml($parm1, parm2) {
+				$parm1.append("<div class='indent-content box-shadow'>" +
+					"<div class='content-top'>" +
+					"<ul class='content-top-sm hidden-xs'>" +
+					"<li class='pull-left'>" +
+					"<b>" + parm2[0] +
+					"<span>&nbsp;订单编号:&nbsp;</span>" +
+					"<span>" + parm2[1] + "</span></b>" +
+					"</li>" +
+					"<li class='pull-left'></li>" +
+					"<li class='pull-right label label-default'>待扫描</li>" +
+					"</ul>" +
+					"<ul class='content-top-xs visible-xs'>" +
+					"<li>" +
+					"<b>" + parm2[0] +
+					"<span>订单编号:</span>" +
+					"<span>" + parm2[1] + "</span></b>" +
+					"</li>" +
+					"<li class='label label-default'>待扫描</li>" +
+					"</ul>" +
+					"</div>" +
+					"<div class='content-bottom'>" +
+					"<div class='col-xs-12 col-sm-6 col-md-4 col-lg-4'>" +
+					'<img src="images/5.jpg">' +
+					"</div>" +
+					"<div class='bottom-center col-xs-12 col-sm-6 col-md-4 col-lg-4' style=''>" +
+					"<span class='label label-danger'>" + parm2[2] + "</span>" +
+					"<li>&nbsp;&nbsp;&nbsp;" + parm2[3] + "</li>" +
+					"<big>" + parm2[4] + "</big>" +
+					"</div>" +
+					"<div class='bottom-right  col-md-4 col-lg-4 hidden-sm visible-md visible-lg'>" +
+					'<button type="button" class="btn btn-info btn-sm" id="modifytime">修改时间</button>' +
+					'<button type="button" class="btn btn-info btn-sm" id="modifysite">修改地点</button>' +
+					'<button type="button" class="btn btn-danger btn-sm" id="reactivation">重新激活</button>' +
+					"</div>" +
+					"<div class='bottom-right col-xs-12 col-sm-12 visible-sm visible-xs'>" +
+					'<button type="button" class="btn btn-info btn-sm" id="modifytime">修改时间</button>' +
+					'<button type="button" class="btn btn-info btn-sm" id="modifysite">修改地点</button>' +
+					'<button type="button" class="btn btn-danger btn-sm" id="reactivation">重新激活</button>' +
+					"</div>" +
+					"</div>" +
+					"</div>");
+			};
+			//动态创建未逾期预约的订单
+			function create_notoverduehtml($parm1, parm2) {
+				$parm1.append("<div class='indent-content box-shadow'>" +
+					"<div class='content-top'>" +
+					"<ul class='content-top-sm hidden-xs'>" +
+					"<li class='pull-left'>" +
+					"<b>" + parm2[0] +
+					"<span>订单编号：</span>" +
+					"<span>" + parm2[1] + "</span></b>" +
+					"</li>" +
+					"<li class='pull-left'></li>" +
+					"<li class='pull-right label label-danger'>待扫描</li>" +
+					"</ul>" +
+					"<ul class='content-top-xs visible-xs'>" +
+					"<li>" +
+					"<b>" + parm2[0] +
+					"<span>订单编号：</span>" +
+					"<span>" + parm2[1] + "</span></b>" +
+					"</li>" +
+					"<li class='label label-danger'>待扫描</li>" +
+					"</ul>" +
+					"</div>" +
+					"<div class='content-bottom'>" +
+					"<div class='col-xs-12 col-sm-6 col-md-4 col-lg-4'>" +
+					'<img src="images/5.jpg">' +
+					"</div>" +
+					"<div class='bottom-center col-xs-12 col-sm-6 col-md-4 col-lg-4' style=''>" +
+					"<span class='label label-info'>" + parm2[2] + "</span>" +
+					"<li>&nbsp;&nbsp;&nbsp;" + parm2[3] + "</li>" +
+					"<p>" + parm2[4] + "</p>" +
+					"</div>" +
+					"<div class='bottom-right  col-md-4 col-lg-4 hidden-sm visible-md visible-lg'>" +
+					'<button type="button" class="btn btn-info btn-sm" id="modifytime">修改时间</button>' +
+					'<button type="button" class="btn btn-info btn-sm" id="modifysite">修改地点</button>' +
+					'<button type="button" class="btn btn-danger btn-sm" id="cancelscan">取消扫描</button>' +
+					"</div>" +
+					"<div class='bottom-right col-xs-12 col-sm-12 visible-sm visible-xs'  style=''>" +
+					'<button type="button" class="btn btn-info btn-sm" style="margin-top:30px;" id="modifytime">修改时间</button>' +
+					'<button type="button" class="btn btn-info btn-sm" style="margin-top:30px;" id="modifysite">修改地点</button>' +
+					'<button type="button" class="btn btn-danger btn-sm" style="margin-top:30px;" id="cancelscan">取消扫描</button>' +
+					"</div>" +
+					"</div>" +
+					"</div>");
+			};
+			
+			/**
+			 * 修改时间
+			 * */
+			$(".indent").delegate("#modifytime","click",function(){
+				console.log($(this).closest(".indent-content"));
+			});
+			/**
+			 * 修改地点
+			 * */
+			$(".indent").delegate("#modifysite","click",function(){
+				console.log($(this).closest(".indent-content"));
+			});
+			/**
+			 * 修改重新激活
+			 * */
+			$(".indent").delegate("#reactivation","click",function(){
+				console.log($(this).closest(".indent-content"));
+			});
+			/**
+			 * 取消扫描
+			 * */
+			$(".indent").delegate("#cancelscan","click",function(){
+				console.log($(this).closest(".indent-content"));
+			});
+			
+			
+			
+			
+			
+			(function($) {
+				$(function() {
+					nav();
+				});
+		
+				function nav() {
+					var $slider = $(".nav-line"),
+						$targetEle = $(".indent-nav>ul>li:not('.last')");
+		
+					$targetEle.mouseenter(function() {
+						var $_parent = $(this);
+						_width = $_parent.outerWidth(true),
+							posL = $_parent.position().left;
+						$slider.stop(true, true).animate({
+								"left": posL,
+								"width": _width
+							},
+							"fast");
+						$(this).css("color", "#02c7f1").siblings().css("color", "");
+					});
+				};
+		
+			})(jQuery);
+		</script>
+</body>
+</html>
+

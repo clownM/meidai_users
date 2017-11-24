@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>个人信息</title>
+
+    <link rel="shortcut icon" href="images/logoico.ico" type="image/x-icon" />
+
+    <link href="3rd/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/indivallordersidual/fswear.css">
+    <link rel="stylesheet" type="text/css" href="css/personal.css">
+    <link rel="stylesheet" href="css/pagestyle.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+      <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="3rd/jquery.min.js"></script>
+    <!-- <script src="3rd/jquery-3.1.0.min.js"></script> -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="3rd/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <!-- 分页器 -->
+    <script src="js/jquery.pagination.js"></script>
+
+    <script type="text/javascript" src='js/fswear.js'></script>
+    <script type="text/javascript" src='js/fswear_user.js'></script>
+    <script src="js/personal.js"></script>
+
+    <style>
+        #navright {
+            margin-top: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 导航开始 -->
+    <div class='user_nav_content'></div>
+    <!-- 导航结束 END-->
+    <div id="box">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 hidden-xs" id="navleft">
+                </div>
+                <div class="col-sm-9" id="navright">
+                    <div id="content">
+                        <div class="article">
+                            <div class="articleheader">
+                                <ul>
+                                    <li class="selected">当月订单</li>
+                                    <li>一年内订单</li>
+                                    <li>所有订单</li>
+                                </ul>
+                                <div class="movebox"></div>
+                            </div>
+                            <div class="yy">
+                                <div class="articlecontent">
+                                    <div id='userdata_error'>
+                                        <p>登录错误请重新登录</p>
+                                        <p>网络错误请重新登录</p>
+                                    </div>
+                                    <div class="orderonemonthago orderbar"></div>
+                                    <div class="orderoneyearago"></div>
+                                    <div class="allorders"></div>
+                                    <!-- <div class="articlecontentheader">
+											<span class="ordertime">2016.08.22</span>
+											<span>订单编号:
+												<span class="ordernumber">201608225216001</span>
+											</span>
+											<span class="orderstatus">交易完成</span>
+										</div>
+										<div class="articlecontentbody">
+											<div class="eyeinformation">
+												<h3>镜片参数</h3>
+												<div class="eyeinformation_left" >
+													<div class="container">
+														<div class="row">
+															<div class="col-sm-2 eyeinformation_left_div1">
+																<span>右眼</span>
+																<span>(R)</span>
+																<span>:</span>
+															</div>
+															<div class="col-sm-3 eyeinformation_left_div">
+																S<span>(球镜)</span>
+																<input type="text" class="form-control inputblock"/>
+															</div>
+															<div class="col-sm-3 eyeinformation_left_div">
+																C<span>(柱镜)</span>
+																<input type="text" class="form-control inputblock"/>	
+															</div>
+															<div class="col-sm-3 eyeinformation_left_div">
+																A<span>(轴向)</span>
+																<input type="text" class="form-control inputblock"/>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="eyeinformation_left" >
+													<div class="container">
+														<div class="row">
+															<div class="col-sm-2 eyeinformation_left_div1">
+																<span>左眼</span>
+																<span>(L)</span>
+																<span>:</span>
+															</div>
+															<div class="col-sm-3 eyeinformation_left_div">
+																S<span>(球镜)</span>
+																<input type="text" class="form-control inputblock"/>
+															</div>
+															<div class="col-sm-3 eyeinformation_left_div">
+																C<span>(柱镜)</span>
+																<input type="text" class="form-control inputblock"/>	
+															</div>
+															<div class="col-sm-3 eyeinformation_left_div">
+																A<span>(轴向)</span>
+																<input type="text" class="form-control inputblock"/>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="eyeinformation_left" >
+													<div class="container">
+														<div class="row">
+															<div class="col-sm-5 eyeinformation_left_div" style="padding: 0px;">
+																<span style="vertical-align: middle;">瞳&nbsp;&nbsp;&nbsp;&nbsp;距</span>：
+																<input type="text" class="form-control inputblock"/>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="glassesinformation">
+												<h3>镜框参数</h3>
+												<div class="glassesinformationcontent">
+													<div class="container">
+														<div class="row">
+															<div class="col-sm-3">
+																<span>镜框比</span>
+																<input type="text" class="form-control inputblock"/>
+															</div>
+															<div class="col-sm-3">
+																<span>鼻中位</span>
+																<input type="text" class="form-control inputblock"/>
+															</div>
+															<div class="col-sm-3">
+																<span>鼻中宽</span>
+																<input type="text" class="form-control inputblock"/>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="glassesphone">
+												<div class="container">
+													<div class="row">
+														<div class="col-sm-6">
+															<span>MFA755</span>
+															<img src="images/product/calliope_md18-01.png" />
+															<div class="glassescolor" >
+																<span class="glassestext">#282828</span>
+																<span class="glassescolorstyle"></span>
+															</div>
+														</div>
+														<div class="col-sm-6" >
+															<span>C3</span>
+															<img src="images/product/c6.png">
+															<div class="glassescolor">
+																<span class="glassestext">#282828</span>
+																<span class="glassescolorstyle"></span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div> -->
+                                </div>
+                            </div>
+                            <div class="_page">
+                                <div class="orderonemonthagopage  _pageselect">
+                                    <div id="pagingdevice2"></div>
+                                </div>
+                                <div class="orderoneyearagopage">
+                                    <div id="pagingdevice3"></div>
+                                </div>
+                                <div class="allorderspage">
+                                    <div id="pagingdevice1"></div>
+                                </div>
+                            </div>
+                            <!-- <div class="_page">
+									<ul class="pagination _pageindex">
+									    <li><a href="#">&laquo;</a></li>
+									    <li><a href="#">1</a></li>
+									    <li><a href="#">2</a></li>
+									    <li><a href="#">3</a></li>
+									    <li><a href="#">4</a></li>
+									    <li><a href="#">5</a></li>
+									    <li><a href="#">&raquo;</a></li>
+									</ul>
+								</div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

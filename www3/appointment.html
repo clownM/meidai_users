@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>预约页面</title>
+
+    <link href="3rd/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="3rd/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/individual/fswear.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+      <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="3rd/jquery.min.js"></script>
+    <script src="3rd/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="3rd/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="3rd/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+    <script type="text/javascript" src='js/fswear.js'></script>
+    <script type="text/javascript" src='js/fswear_user.js'></script>
+
+
+
+    <style>
+        /*预约页面*/
+        
+        .appointment {margin-top: 285px;text-align: center;}
+        .appointment>div{width:100%;}
+        
+        .appointment .btn-group{margin-top: 30px;}
+        
+        .appointment .btn-group button {background: #FBFBFB;color: #7D7C7D;}
+        
+        .appointment .btn-group button:nth-child(2) {width: 242px;height: 34px;text-align: right;}
+        
+        .appointment .transverse {width:100%;max-width: 350px;margin-top: 100px;margin-bottom: 30px;}
+        
+        .appointment .date,.time {width:100%;/*width: 194px;*/height: 34px;text-align: right;border: 1px solid #ccc;border-right: 0px;background: #FBFBFB;color: #7D7C7D;cursor: pointer;z-index: 12;}
+        
+        .appointment .input-group {width:100%;max-width: 320px;height: 30px;margin-left: auto;margin-right: auto;}
+        /*.datetimepicker-inline{display: none;}*/
+        /*.datetimepicker-days{display: none;}*/
+        
+        .date .datetimepicker-dropdown-bottom-left {top: 33% !important;}
+        
+        .input-group-addon {background: #FBFBFB;color: #7D7C7D;}
+        @media(min-width:768px ) {
+        	.fswxx {top: 317px !important;}
+        	.fswyy{top: 370px !important;}
+        }
+        
+        @media(max-width:767px ) {
+            .appointment .btn-group button:nth-child(2) {width: 234px !important;}
+        	.fswxx {top: 225px !important;}
+        	.fswyy{top: 279px !important;}
+            .appointment {margin-top: 50px;}
+            .input-group input{border-radius: 0px !important;}
+
+        }
+
+        @media(max-width:320px ) {   
+            .appointment .btn-group button:nth-child(2) {width: 179px !important;}
+            .fswxx {left: 80px !important;}
+            .fswyy{left: 80px !important;}
+        }
+        
+        /*.datetimepicker-dropdown-bottom-right{top:38.5% !important;}*/
+    </style>
+</head>
+<body>
+    <!-- 导航开始 -->   
+    <div class='user_nav_content'></div>
+    <!-- 导航结束 END-->
+
+    <!-- 登录密码修改页 -->
+    <div class="container" >
+        <div class="col-sm-3 hidden-xs" id="navleft">       
+        </div>
+        <!-- 预约页面 -->
+        <div class='appointment col-sm-9'>
+        <div class='container'>	
+            <div class="input-group">
+                <span class="input-group-addon">预约日期</span>
+                <input class="date" size="16" type="text" value="" readonly>
+                <span class="input-group-addon"><span class="caret"></span></span>
+            </div>
+    		<br>
+            <div class="input-group">
+                <span class="input-group-addon">预约时间</span>
+                <!-- <input class="site" size="16" type="text" value="" readonly> -->
+                <input class="time" size="16" type="text" value="" readonly>
+                <span class="input-group-addon"><span class="caret"></span></span>
+            </div>
+    		<br>
+    		<div class="btn-group">
+    		  	<button type="button" class="btn btn-default">预约地点</button>
+    		  	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="text-align:left;">
+    		  		杭州剑桥公社F座907
+    			    <!-- <span class="caret"></span> -->
+    			    <!-- <span class="sr-only">Toggle Dropdown</span> -->
+    		  	</button>
+    		  	<!-- <ul class="dropdown-menu" role="menu">
+    			    <li><a href="#">Action</a></li>
+    			    <li><a href="#">Another action</a></li>
+    			    <li><a href="#">Something else here</a></li>
+    			    <li class="divider"></li>
+    			    <li><a href="#">Separated link</a></li>
+    		 	</ul> -->
+    		</div>
+            <!-- <div style="width:100%;max-width:320px;height:35px;margin:50px auto;">
+                <label class='pull-left' style="width:25%;height:35px;border:1px solid #CCCCCC;line-height:35px;border-top-left-radius:4px;border-bottom-left-radius:4px;background: #FBFBFB;color: #7D7C7D;font-weight: 400;">预约地点</label>
+                <select class='pull-right' style='width:75%;height:35px;border:1px solid #CCCCCC;border-top-left-radius:0px;border-bottom-left-radius:0px;border-top-right-radius:4px;border-bottom-right-radius:4px;border-left: 0px;background: #FBFBFB;color: #7D7C7D;'>
+                    <option value="">杭州剑桥公社F座907</option>
+                    <option value="">文二路亨利眼镜店</option>
+                </select>
+            </div> -->
+    		<div class='transverse'></div>
+            <button id='btn_order' type="button" class="btn btn-danger btn-sm">预 &nbsp; &nbsp; &nbsp; 约</button>
+    	</div>
+        </div>
+    </div>
+	
+    <!-- 预约页面 END -->
+
+    <script>
+     
+        
+//      $(".date").datetimepicker({
+//          language: 'zh-CN',
+//          format: "yyyy-mm-dd",
+//          minuteStep : 1,
+//          pickerPosition : "bottom-right",
+//          maxView: 4,
+//          minView: 2,
+//          startDate : "2016-09-23",
+//          initialDate : "2016-09-23",
+//          autoclose: true,
+//          startView:2,          
+//      });
+// $(".fsw_yy").datetimepicker({
+//          language: 'zh-CN',
+//          format: "hh:ii",
+//          // minuteStep : 1,
+//          pickerPosition : "bottom-right",
+//          minView: "09:00",
+//          maxView: "18:00",
+//          // minView: 2,
+//          // startDate : "09:00:00",
+//          // endDate : '06:00:00'
+//          initialDate : "09:00",
+//          autoclose: true,
+//          startView:1,          
+//      });
+	$(".date").datetimepicker({
+		language: 'zh-CN',
+		format: "yyyy-mm-dd",
+		startView: 3,
+		minView: 2,
+		autoclose: true,
+		todayHighlight: true,
+		todayBtn: false,
+		startDate: "2014-10-1",
+		endDate: "2030-10-1",
+		pickerPosition: "bottom-left fswxx"
+	});
+	$(".time").datetimepicker({
+		language: 'zh-CN',
+		format: "hh:ii",
+        // initialDate: "11:30",
+		initialDate: "11:00",
+		startView: 1,
+		minView: 1,
+		autoclose: true,
+		pickerPosition: "bottom-left fswyy"
+	});
+
+    $('#btn_order').click(function(){
+        console.log($(".date").val())
+        console.log($(".time").val())
+
+    })
+  </script>
+</body>
+</html>
+

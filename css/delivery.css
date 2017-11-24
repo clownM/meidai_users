@@ -1,0 +1,30 @@
+#vueapp{
+    width: 100%;
+    min-height: 200px;
+    background-color: #fff;
+    padding: 10px 20px;
+}
+#vueapp ul li{
+    border-top: 1px dotted #ccc;
+    border-left: 1px dashed rgb(2, 207, 243);
+    position: relative;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#vueapp ul li{
+    border-left: 1px do
+}
+#vueapp ul li p.dot{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: -5px;
+    top: 50%;
+    margin-top: -5px;
+    border-radius: 50%;
+    background-color: rgb(255, 90, 90);
+}
+#vueapp ul li p{
+    margin-bottom: 0;
+}

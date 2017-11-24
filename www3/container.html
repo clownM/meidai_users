@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>个人信息</title>
+
+    <link rel="shortcut icon" href="images/logoico.ico" type="image/x-icon" />
+    
+    <link href="3rd/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/individual/fswear.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+      <script src="http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="3rd/jquery.min.js"></script>
+    <!-- <script src="3rd/jquery-3.1.0.min.js"></script> -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="3rd/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <!-- 城市三级连动 -->
+    <script src="3rd/distpicker/distpicker.data.js"></script>
+    <script src="3rd/distpicker/distpicker.js"></script>
+
+    <script type="text/javascript" src='js/fswear.js'></script>
+    <script type="text/javascript" src='js/fswear_user.js'></script>
+    <!-- 生日插件 -->
+    <script src="js/Jquery.myPlugin.js"></script>
+    
+
+    <style>
+        .active {background: red;}
+        /*个人信息*/
+        .personal {margin: 0 auto;text-align: center;}
+        .personal .form-inline {margin-top: 20px;}
+        .personal .form-group{width:100%;}
+        .personal .form-inline .form-control {width:100%;max-width: 320px;height: 35px;}
+        .personal .form-inline .btn-group>button:first-child {/*width: 68px;*/width: 20%;}
+        .personal .form-inline .transverse {width:100%;max-width: 350px;margin: 0 auto;margin-top: 50px;}
+        .personal img {width: 140px;}
+        .personal h2 {color: #7D7C7D;margin-top: 150px;}
+        .personal-sex {
+            width:100%;
+        	max-width: 320px;
+        	height: 35px;
+        	border: 1px solid #CCCCCC;
+        	border-radius: 4px;
+        	margin: 0 auto;
+        	line-height: 34px;
+        	color: #7D7C7D;
+        }
+        .personal-sex li {float: left;}
+        .personal-sex li:first-child {width: 30%;}
+        .personal-sex button:first-child {width: 100%;height: 33px;border: 0px;background: transparent;}
+        .personal-sex button:nth-child(2) {width: 100%;}
+        .personal-sex li:nth-child(2) {width: 35%;border-left: 1px solid #ccc;border-right: 1px solid #ccc;}
+        .personal-sex li:nth-child(3) {width: 35%;}
+        .form-group,.btn-group,.personal-sex{margin-top: 30px;position: relative;}
+        .form-group .fsw_jubuerr{
+        	width: 100%;
+        	height: 20px;
+        	position: absolute;
+        	top: 35px;
+        	left: 0px;
+        	padding:0px 12px;
+        	text-align: left;
+        }
+        .form-group .fsw_jubuerr .phoneErr{font-size: 12px;color: red;line-height:20px;}
+        .input-append {width: 45px;height: 35px;}
+        #selectTime{width:100%;max-width: 322px;}
+		#birbtn{height: 35px;}
+		#year,#month,#Data{/*width: 84px;*/width: 26.5%;float: left;}
+		#year{border-radius: 0px;border-left: transparent;border-right: transparent;}
+		#month{border-radius: 0px;border-right: transparent;}
+		#Data{border-radius:0px 4px 4px 0px;}
+		#distpicker1{width:100%;max-width: 322px;}
+		#residence{height: 35px;}
+		#province,#city,#district{/*width: 84px;*/width: 26.5%;padding-left: 10px;padding-right: 10px;float: left;}
+		#province{border-radius: 0px;border-left: transparent;border-right: transparent;}
+		#city{border-radius: 0px;border-right: transparent;}
+		#district{border-radius:0px 4px 4px 0px;}
+       	.fws_input_danger{border-color: red;}
+        .sex_gender{background-color: #02c7f1;}
+        .error {
+        	width: 320px;
+        	height: 35px;
+        	background: #FFB8B8;
+        	color: #d14242;
+        	line-height: 35px;
+        	margin: 0 auto;
+        	margin-top: 10px;
+        	padding-left: 15px;
+        	border-radius: 10px;
+        	display:  none;
+        	text-align: left;
+        }
+        
+        .error span {color: #d14242;display: inline-block;margin-left: 5px;}
+        .error i{top: 0px;color: #d14242;vertical-align: middle;}
+        .succeed {
+        	width: 320px;
+        	height: 35px;
+        	background: #C4E2AA;
+        	color: #60a31f;
+        	line-height: 35px;
+        	margin: 0 auto;
+        	margin-top: 10px;
+        	padding-left: 15px;
+        	border-radius: 10px;
+      	  display: none;
+        	text-align: left;
+        }
+        .succeed span {color: #60a31f;display: inline-block;margin-left: 5px;vertical-align: middle;}
+        #savbtn{margin-top: 10px;margin-bottom: 50px;}
+
+        @media (max-width:767px ) {
+            .personal h2 { margin-top: 30px !important;}
+        }
+
+        #error_useruuid{color:red;text-align: center;font-size: 24px;margin-top: 58%;display: none;}
+
+        /*性别报错*/
+        .sex_error,.birthday_error{color:red;display: none;}
+
+    </style>
+</head>
+<body>
+    <!-- 导航开始 -->   
+    <div class='user_nav_content'></div>
+    <!-- 导航结束 END-->
+
+    <div class="container" >
+        <div class="col-sm-3 hidden-xs" id="navleft">       
+        </div>
+        <!-- 个人信息页面 -->
+        <div class="col-sm-9" id="navright">
+            <div class='personal'>
+                <h2>个人信息</h2>
+                <img src="images/2.jpg" alt="..." class="img-thumbnail">
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputEmail1">昵称</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="昵称">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputEmail2">真实姓名</label>
+                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="真实姓名">
+                    </div>
+                    <ul class='personal-sex' id='personal-sex1'>
+                        <li>性别</li>
+                        <li class='sex' fsw_gender="male">男</li>
+                        <li class='sex' fsw_gender="female">女</li>
+                        <p class="sex_error">请选择性别</p>
+                    </ul> 
+                    <div class="form-group">
+                        <label class="sr-only" for="exampleInputEmail3">联系电话</label>
+                        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="联系电话">
+                        <div class="fsw_jubuerr">
+                        	<span class="phoneErr"></span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="btn-group" role="group" aria-label="..." id="selectTime">
+                        <button type="button" class="btn btn-default" id="birbtn">生日</button>
+                        <select class="form-control" id="year">
+        		            <option disabled>年</option>
+        				</select>
+        				<select class="form-control" id="month">
+        					<option disabled>月</option>
+        				</select>
+        				<select class="form-control" id="Data">
+        					<option disabled>日</option>
+        				</select>
+                        <p class="birthday_error">请选择生日</p>
+                    </div>
+                    <br>
+                    <div class="btn-group" role="group" aria-label="..." id="distpicker1">
+                 		<button type="button" class="btn btn-default" id="residence">居住地</button>
+                 		<select class="form-control" id="province"></select>
+    					<select class="form-control" id="city"></select>
+    					<select class="form-control" id="district"></select>
+                    </div>
+                    <div class='transverse'></div>
+                    <div class="form-group">
+            			<div class='error'>
+			            	<i class='glyphicon glyphicon-remove'></i>
+			                <span>网络异常</span>
+			            </div>
+			            <div class='succeed'>
+			            	<i class='glyphicon glyphicon-ok'></i>
+			                <span>密码修改成功</span>
+			            </div>
+                        <button type="button" class="btn btn-danger btn-sm" id="savbtn">保 &nbsp; &nbsp; &nbsp; 存</button>
+                    </div>
+                </form>
+            </div>
+            <div id='error_useruuid'>请重新登录</div>
+        </div>
+        <!-- 个人信息页面 END -->      
+    </div>
+		<script> 
+            console.log(getCookie("uuid"))
+            if(getCookie("uuid") != ''){
+                $('.personal').css('display','block');
+                init_infor();
+            }else{
+                $('.personal').css('display','none');
+                $('#error_useruuid').css('display','block');
+            }
+            
+            // var order_data = {
+            //     "action": "query",
+            //     "uuid": 'be3f2732e8f1068dcec2ae9c94ba90fd',
+            //     "scanphoto": "",
+
+            // };
+            // $.ajax({
+            //     type: "post",
+            //     data: order_data,
+            //     dataType: "json",
+            //     url: "/order",
+            //     success: function(data) {
+            //         console.log(data)
+            //         $('.img-thumbnail').attr('src','/data?action=download&type=scanphoto&uuid='+data.scanphoto);
+                    
+            //     },
+            //     error: function(er) {
+            //         console.log(er)
+            //     }
+            // });
+
+
+			/**
+			 * 初始化信息
+			 * */
+			function init_infor(){
+					var init_year;
+					var init_month;
+					var init_day;
+					var init_data = {
+								"action":"query",
+								"uuid": getCookie("uuid"),
+								"phone":"",
+								"username":"",
+								"gender":"",
+								"birthday":"",
+								"address":""
+					};
+					$.ajax({
+							type: "post",
+							data: init_data,
+							dataType: "json",
+							url: "/user",
+							success: function(data) {
+                                if(data.result == 'true'){
+    								var _usergender=$("#personal-sex1").find(".sex");
+    								for(var i=0;i<_usergender.length;i++){
+    									if(data.gender==_usergender[i].getAttribute("fsw_gender")){
+    										_usergender.eq(i).addClass("sex_gender").siblings().removeClass("sex_gender");
+    									}
+    								}
+    								$("#exampleInputEmail1").val(data.username);
+    								$("#exampleInputEmail2").val(data.username);
+    								$("#exampleInputEmail3").val(data.phone);
+    								var _date=new Date(data.birthday);
+    								init_year=_date.getFullYear();
+    								init_month=_date.getMonth()+1;
+    								init_day=_date.getDate();
+                                    setbirthday(init_year,init_month,init_day);
+    								// setbirthday(1990,08,08);
+                                }else{
+                                    console.log(data)
+                                }
+							},
+							error: function() {
+								setbirthday();
+							}
+					});
+			}
+			/**
+			 * 生日
+			 * */
+			function setbirthday(parm1,parm2,parm3){
+				var _startyear=new Date();
+				$("#selectTime").myPlugin({
+									"fswyear":$("#year"),
+									"fswmonth":$("#month"),
+									"fswday":$("#Data")
+								},{
+									"startyear":_startyear.getFullYear()-100,
+									"longyear":100,
+									"init_year":parm1,
+									"init_month":parm2,
+									"init_day":parm3,
+				});
+			}
+			/**
+			 * 选择性别
+			 * */
+		    $('#personal-sex1 .sex').click(function(){
+                $('.sex_error').css('display','none');
+		        var nList=$(this).index();
+		        $(this).addClass("sex_gender").siblings().removeClass("sex_gender");
+		    });
+			//区域
+			$("#distpicker1").distpicker({
+				    autoSelect: false
+			});
+			//电话号码
+			$("#exampleInputEmail3").blur(function(){
+				this.placeholder="联系电话";
+				if($(this).val()!=""){
+					this.placeholder="";
+				};
+				if(!$(this).phonetest()&&this.placeholder==""){
+					$(this).inputphone_err({
+						"errtrue":true,
+						"docoment1":$(".fsw_jubuerr .phoneErr"),
+						"stl":"电话号码输入不正确",
+					});
+				}
+			}).focus(function(){
+				this.placeholder="";
+				$(this).inputphone_err({
+						"errtrue":false,
+						"docoment1":$(".fsw_jubuerr .phoneErr"),
+						"stl":"",
+				});
+			});
+
+
+            // 生日选择点击时，报错信息隐藏
+            $("#year,#month,#Data").click(function(){
+                $('.birthday_error').css('display','none');
+            })
+
+			//保存按钮
+			$("#savbtn").click(function(){
+				var xingbei=false;
+				var _nickname=$("#exampleInputEmail1").val();
+				var _realname=$("#exampleInputEmail2").val();
+				var _phone=$("#exampleInputEmail3").val();
+				var _sexgender=$("#personal-sex1").find(".sex");
+				for(var i=0;i<_sexgender.length;i++){
+					if($(_sexgender[i]).is(".sex_gender")){
+						xingbei=true;
+					}
+				}
+				if(!xingbei){
+					console.log("请选择性别");
+                    $('.sex_error').css('display','block');
+					return ;
+				}
+				var _gender=$("#personal-sex1>li.sex_gender")[0].getAttribute("fsw_gender");
+				if(_phone==""){
+					$("#exampleInputEmail3").inputphone_err({
+						"errtrue":true,
+						"docoment1":$(".fsw_jubuerr .phoneErr"),
+						"stl":"电话号码不能为空",
+					});
+					return ;
+				}
+                if($("#year").val() != null && $("#month").val() != null && $("#Data").val() != null){
+    				var _birthday=[];
+    						_birthday[0]=$("#year").val();
+    						_birthday[1]=$("#month").val();
+    						_birthday[2]=$("#Data").val();
+    				var _birthdayRFC=dateRFC2822(_birthday);
+                }else{
+                    $('.birthday_error').css('display','block');
+                    return ;
+                }
+
+				var _Residence={
+							"province":$("#province").val(),
+							"city":$("#city").val(),
+							"district":$("#district").val()
+						};
+				var _data = {
+						"action": "update",
+						"uuid": getCookie("uuid"),
+						"nickname": _nickname,
+						"realname": _realname,
+						"phone":_phone,
+						"birthday":_birthdayRFC,
+						"gender":_gender,
+						"address":"浙江杭州西湖"
+				}
+                console.log(_data)
+				// $.ajax({
+				// 		type: "post",
+				// 		data: _data,
+				// 		dataType: "json",
+				// 		url: "/user",
+				// 		success: function(data) {
+				// 			success_infro(true,"用户信息保存成功");
+				// 			setTimeout(function(){
+				// 				success_infro(false,"");
+				// 			},3000);
+					
+				// 		},
+				// 		error: function() {
+				// 			error_infro(true,"网络异常")
+				// 			setTimeout(function(){
+				// 				error_infro(false,"");
+				// 			},3000);
+				// 		}
+				// });
+			});
+			// 将日期转换为RFC2822格式
+			function dateRFC2822(time){
+				  var _arry=time; 
+					var _date=new Date(_arry.join("-"));
+					var dayOfWeek=_date.getDay();
+					var monthNames =[
+								"Jan" , "Feb" , "Mar" , "Apr" , "May" , "Jun" ,
+								"Jul" , "Aug" , "Sep" , "Oct" , "Nov" , "Dec"
+							];
+					var dayweek=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+							return dayweek[dayOfWeek]+", "+_arry[2]+" "+monthNames[_arry[1]-1]+" "+_arry[0]+" 00:00:00 -0000";
+			}
+				//成功信息框
+			function success_infro(param1,param2){
+				param1?$(".succeed").css({"display":"block"}):$(".succeed").css({"display":"none"});
+				$(".succeed span").text(param2);
+			}
+			
+			//错误信息框
+			function error_infro(param1,param2){
+				param1?$(".error").css({"display":"block"}):$(".error").css({"display":"none"});
+				$(".error span").text(param2);
+			}
+		</script>
+
+</body>
+</html>
